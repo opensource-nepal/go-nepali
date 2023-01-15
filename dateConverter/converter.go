@@ -252,7 +252,7 @@ func EnglishToNepali(year int, month int, day int) (npYear int, npMonth int, npD
 	// Remaining difference is the day
 	npDay += difference
 
-	return
+	return npYear, npMonth, npDay
 }
 
 // Converts nepali date to english.
@@ -300,5 +300,5 @@ func NepaliToEnglish(year int, month int, day int) (enYear int, enMonth int, enD
 	// Remaining difference is the day
 	enDay += difference
 
-	return
+	return enYear, enMonth, enDay
 }
