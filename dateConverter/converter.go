@@ -4,7 +4,7 @@
 // USAGE:
 // y, m, d := EnglishToNepali(2023, 1, 15)
 // y, m, d := NepaliToEnglish(2079, 10, 1)
-package date_converter
+package dateConverter
 
 import (
 	"math"
@@ -15,14 +15,14 @@ type NepaliMonthData struct {
 	yearDays  int
 }
 
-func _getEnMonths(isLeapYear bool) [12]int {
+func getEnMonths(isLeapYear bool) [12]int {
 	if isLeapYear {
 		return [12]int{31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31}
 	}
 	return [12]int{31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31}
 }
 
-func _getNpMothsData() []NepaliMonthData {
+func getNpMonthsData() []NepaliMonthData {
 	return []NepaliMonthData{
 		{[12]int{30, 32, 31, 32, 31, 30, 30, 30, 29, 30, 29, 31}, 365}, // 2000 BS - 1944 AD
 		{[12]int{31, 31, 32, 31, 31, 31, 30, 29, 30, 29, 30, 30}, 365}, // 2001 BS
@@ -130,7 +130,7 @@ func _getNpMothsData() []NepaliMonthData {
 // ENGLISH DATE CONVERSION
 
 // checks if english date in within range 1944 - 2042
-func _checkEnglishDate(year int, month int, day int) bool {
+func checkEnglishDate(year int, month int, day int) bool {
 	if year < 1944 || year > 2042 {
 		return false
 	}
@@ -144,9 +144,9 @@ func _checkEnglishDate(year int, month int, day int) bool {
 }
 
 // counts and returns total days from the date 0000-01-01
-func _getTotalDaysFromEnglishDate(year int, month int, day int) int {
+func getTotalDaysFromEnglishDate(year int, month int, day int) int {
 	var totalDays int = year*365 + day
-	enMonths := _getEnMonths(false)
+	enMonths := getEnMonths(false)
 	for i := 0; i < month-1; i++ {
 		totalDays = totalDays + enMonths[i]
 	}
@@ -160,15 +160,10 @@ func _getTotalDaysFromEnglishDate(year int, month int, day int) int {
 	return totalDays
 }
 
-// returns difference days between two english dates
-func _getDaysBetweenEnglishDates(year1 int, month1 int, day1 int, year2 int, month2 int, day2 int) int {
-	return int(math.Abs(float64(_getTotalDaysFromEnglishDate(year1, month1, day1) - _getTotalDaysFromEnglishDate(year2, month2, day2))))
-}
-
 // NEPALI DATE CONVERSION
 
 // checks if nepali date is in range 2000-2098
-func _checkNepaliDate(year int, month int, day int) bool {
+func checkNepaliDate(year int, month int, day int) bool {
 	if year < 2000 || year > 2098 {
 		return false
 	}
@@ -176,7 +171,7 @@ func _checkNepaliDate(year int, month int, day int) bool {
 		return false
 	}
 
-	npMonthData := _getNpMothsData()
+	npMonthData := getNpMonthsData()
 	if day < 1 || day > npMonthData[year-2000].monthData[month-1] {
 		return false
 	}
@@ -184,9 +179,9 @@ func _checkNepaliDate(year int, month int, day int) bool {
 }
 
 // counts and returns total days from the nepali date 2000-01-01
-func _getTotalDaysFromNepaliDate(year int, month int, day int) int {
+func getTotalDaysFromNepaliDate(year int, month int, day int) int {
 	var totalDays int = day - 1
-	npMonthData := _getNpMothsData()
+	npMonthData := getNpMonthsData()
 
 	// adding days of months of 2000
 	var yearIndex int = year - 2000
@@ -201,13 +196,8 @@ func _getTotalDaysFromNepaliDate(year int, month int, day int) int {
 	return totalDays
 }
 
-// returns difference days between two nepali dates"""
-func _getDaysBetweenNepaliDates(year1 int, month1 int, day1 int, year2 int, month2 int, day2 int) int {
-	return int(math.Abs(float64(_getTotalDaysFromNepaliDate(year1, month1, day1) - _getTotalDaysFromNepaliDate(year2, month2, day2))))
-}
-
 // checks if the english year is leap year or not"""
-func _isLeapYear(year int) bool {
+func isLeapYear(year int) bool {
 	if year%4 == 0 {
 		if year%100 == 0 {
 			return (year%400 == 0)
@@ -225,8 +215,8 @@ func _isLeapYear(year int) bool {
 func EnglishToNepali(year int, month int, day int) (npYear int, npMonth int, npDay int) {
 	// VALIDATION
 	// checking if date is in range
-	if !_checkEnglishDate(year, month, day) {
-		panic("Date is out of range")
+	if !checkEnglishDate(year, month, day) {
+		return  // TODO: raise an error here
 	}
 
 	// REFERENCE
@@ -237,11 +227,11 @@ func EnglishToNepali(year int, month int, day int) (npYear int, npMonth int, npD
 
 	// DIFFERENCE
 	// calculating difference days from 1943/04/14
-	var difference int = _getDaysBetweenEnglishDates(year, month, day, 1943, 4, 14)
+	var difference int = int(math.Abs(float64(getTotalDaysFromEnglishDate(year, month, day) - getTotalDaysFromEnglishDate(1943, 4, 14))))
 
 	// YEAR
 	// Incrementing year until the difference remains less than 365
-	npMonthData := _getNpMothsData()
+	npMonthData := getNpMonthsData()
 	var yearDataIndex int = 0
 	for difference >= npMonthData[yearDataIndex].yearDays {
 		difference -= npMonthData[yearDataIndex].yearDays
@@ -271,8 +261,8 @@ func EnglishToNepali(year int, month int, day int) (npYear int, npMonth int, npD
 func NepaliToEnglish(year int, month int, day int) (enYear int, enMonth int, enDay int) {
 	// VALIDATION
 	// checking if date is in range
-	if !_checkNepaliDate(year, month, day) {
-		panic("Date is out of range")
+	if !checkNepaliDate(year, month, day) {
+		return  // TODO: raise an error here
 	}
 
 	// REFERENCE
@@ -283,12 +273,12 @@ func NepaliToEnglish(year int, month int, day int) (enYear int, enMonth int, enD
 
 	// DIFFERENCE
 	// calculating difference days from 2000/09/17
-	var difference int = _getDaysBetweenNepaliDates(year, month, day, 2000, 9, 17)
+	var difference int = int(math.Abs(float64(getTotalDaysFromNepaliDate(year, month, day) - getTotalDaysFromNepaliDate(2000, 9, 17))))
 
 	// YEAR
 	// Incrementing year until the difference remains less than 365 (or 365)
-	for (difference >= 366 && _isLeapYear(enYear)) || (difference >= 365 && !(_isLeapYear(enYear))) {
-		if _isLeapYear(enYear) {
+	for (difference >= 366 && isLeapYear(enYear)) || (difference >= 365 && !(isLeapYear(enYear))) {
+		if isLeapYear(enYear) {
 			difference -= 366
 		} else {
 			difference -= 365
@@ -298,7 +288,7 @@ func NepaliToEnglish(year int, month int, day int) (enYear int, enMonth int, enD
 
 	// MONTH
 	// Incrementing month until the difference remains less than next english month (mostly 31)
-	monthDays := _getEnMonths(_isLeapYear(enYear))
+	monthDays := getEnMonths(isLeapYear(enYear))
 	var i int = 0
 	for difference >= monthDays[i] {
 		difference -= monthDays[i]
