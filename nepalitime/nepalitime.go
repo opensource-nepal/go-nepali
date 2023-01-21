@@ -13,18 +13,21 @@ import (
 
 type NepaliTime struct {
 	// note that these members represent nepali values
-	year        int16
-	month       int8
-	day         int8
+	year        int
+	month       int
+	day         int
 	englishTime time.Time
 }
 
-// adds zero on the number if the number is less than 10
+// Converts single digit number into two digits.
+// Adds zero on the number if the number is less than 10.
 //
-// eg. 19 => 19 but 8 => 08
-func addZeroOnNumber(number int) string {
-	if number < 10 {
-		return "0" + fmt.Sprint(number)
+// eg. 19 => 19 and 8 => 08
+//
+// Note: if number is 144 it will return 144
+func twoDigitNumber(number int) string {
+	if number < 10 && number >= 0 {
+		return fmt.Sprintf("0%d", number)
 	}
 	return fmt.Sprint(number)
 }
@@ -35,11 +38,11 @@ func (nt NepaliTime) String() string {
 	return fmt.Sprintf(
 		"%d-%s-%s %s:%s:%s",
 		nt.year,
-		addZeroOnNumber(int(nt.month)),
-		addZeroOnNumber(int(nt.day)),
-		addZeroOnNumber(h),
-		addZeroOnNumber(m),
-		addZeroOnNumber(s),
+		twoDigitNumber(nt.month),
+		twoDigitNumber(nt.day),
+		twoDigitNumber(h),
+		twoDigitNumber(m),
+		twoDigitNumber(s),
 	)
 }
 
@@ -49,25 +52,22 @@ func (nt NepaliTime) ToTime() time.Time {
 
 // Date returns the year, month, and day
 func (nt NepaliTime) Date() (year, month, day int) {
-	year = int(nt.year)
-	month = int(nt.month)
-	day = int(nt.day)
-	return
+	return nt.year, nt.month, nt.day
 }
 
 // Year returns the year in which nepalitime occurs.
 func (nt NepaliTime) Year() int {
-	return int(nt.year)
+	return nt.year
 }
 
 // Month returns the month of the year.
 func (nt NepaliTime) Month() int {
-	return int(nt.month)
+	return nt.month
 }
 
 // Day returns the day of the month.
 func (nt NepaliTime) Day() int {
-	return int(nt.day)
+	return nt.day
 }
 
 // Weekday returns the day of the week.
@@ -108,14 +108,14 @@ func Date(year, month, day, hour, min, sec, nsec int) NepaliTime {
 	enYear, enMonth, enDay := dateConverter.NepaliToEnglish(year, month, day)
 	location, _ := time.LoadLocation("Asia/Kathmandu")
 	englishTime := time.Date(enYear, time.Month(enMonth), enDay, hour, min, sec, nsec, location)
-	return NepaliTime{int16(year), int8(month), int8(day), englishTime}
+	return NepaliTime{year, month, day, englishTime}
 }
 
 // Converts Time object to NepaliTime
 func FromTime(t time.Time) NepaliTime {
 	enYear, enMonth, enDay := t.Date()
 	year, month, day := dateConverter.EnglishToNepali(enYear, int(enMonth), enDay)
-	return NepaliTime{int16(year), int8(month), int8(day), t}
+	return NepaliTime{year, month, day, t}
 }
 
 // Now returns the current nepali time.
