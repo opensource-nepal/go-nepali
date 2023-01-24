@@ -4,32 +4,14 @@ package nepalitime
 import (
 	"fmt"
 	"time"
-
-	"github.com/sugat009/nepali/dateConverter"
 )
-
-// NOTE:
-// Only Date() and FromTime() are supposed to create NepaliTime object
 
 type NepaliTime struct {
 	// note that these members represent nepali values
 	year        int
 	month       int
 	day         int
-	englishTime time.Time
-}
-
-// Converts single digit number into two digits.
-// Adds zero on the number if the number is less than 10.
-//
-// eg. 19 => 19 and 8 => 08
-//
-// Note: if number is 144 it will return 144
-func twoDigitNumber(number int) string {
-	if number < 10 && number >= 0 {
-		return fmt.Sprintf("0%d", number)
-	}
-	return fmt.Sprint(number)
+	englishTime *time.Time
 }
 
 // String returns a string representing the duration in the form "2079-10-06 01:00:05"
@@ -46,7 +28,8 @@ func (nt NepaliTime) String() string {
 	)
 }
 
-func (nt NepaliTime) ToTime() time.Time {
+// Get's the corresponding english time
+func (nt NepaliTime) GetEnglishTime() *time.Time {
 	return nt.englishTime
 }
 
@@ -99,26 +82,4 @@ func (nt NepaliTime) Second() int {
 // in the range [0, 999999999].
 func (nt NepaliTime) Nanosecond() int {
 	return nt.englishTime.Nanosecond()
-}
-
-// Date returns the Time corresponding to
-//
-// yyyy-mm-dd hh:mm:ss + nsec nanoseconds
-func Date(year, month, day, hour, min, sec, nsec int) NepaliTime {
-	enYear, enMonth, enDay := dateConverter.NepaliToEnglish(year, month, day)
-	location, _ := time.LoadLocation("Asia/Kathmandu")
-	englishTime := time.Date(enYear, time.Month(enMonth), enDay, hour, min, sec, nsec, location)
-	return NepaliTime{year, month, day, englishTime}
-}
-
-// Converts Time object to NepaliTime
-func FromTime(t time.Time) NepaliTime {
-	enYear, enMonth, enDay := t.Date()
-	year, month, day := dateConverter.EnglishToNepali(enYear, int(enMonth), enDay)
-	return NepaliTime{year, month, day, t}
-}
-
-// Now returns the current nepali time.
-func Now() NepaliTime {
-	return FromTime(time.Now())
 }
