@@ -2,8 +2,6 @@ package nepalitime
 
 import (
 	"errors"
-	"fmt"
-	"reflect"
 	"strconv"
 	"strings"
 )
