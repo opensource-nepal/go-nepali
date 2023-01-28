@@ -33,7 +33,7 @@ func TestTwoDigitNumberGreaterThan10(t *testing.T) {
 	assert.Equal(t, want, got, "the value returned should be 11")
 }
 
-func TestTwoDigitNumberEqualTo0(t *testing.T) {
+func TestTwoDigitWhenNumberEqualTo0(t *testing.T) {
 	number := 0
 	want := "00"
 
@@ -42,7 +42,7 @@ func TestTwoDigitNumberEqualTo0(t *testing.T) {
 	assert.Equal(t, want, got, "the value returned should be 00")
 }
 
-func TestTwoDigitNumberLessThan0(t *testing.T) {
+func TestTwoDigitWhenNumberLessThan0(t *testing.T) {
 	number := -1
 	want := "-1"
 
