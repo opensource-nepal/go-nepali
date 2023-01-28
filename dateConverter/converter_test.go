@@ -25,26 +25,26 @@ func TestEnglishToNepaliReturnErrorOnMinYearRange(t *testing.T) {
 	assert.NotNil(t, err)
 }
 
-func TestEnglishToNepaliReturnErrorOnInvalidMonth(t *testing.T) {
-	// month 0
+func TestEnglishToNepaliReturnErrorOnMinMonthRange(t *testing.T) {
 	date, err := dateConverter.EnglishToNepali(2023, 0, 4)
-	assert.Nil(t, date)
-	assert.NotNil(t, err)
-
-	// month greater than 12
-	date, err = dateConverter.EnglishToNepali(2023, 13, 4)
 	assert.Nil(t, date)
 	assert.NotNil(t, err)
 }
 
-func TestEnglishToNepaliReturnErrorOnInvalidDay(t *testing.T) {
-	// day 0
+func TestEnglishToNepaliReturnErrorOnMaxMonthRange(t *testing.T) {
+	date, err := dateConverter.EnglishToNepali(2023, 13, 4)
+	assert.Nil(t, date)
+	assert.NotNil(t, err)
+}
+
+func TestEnglishToNepaliReturnErrorOnMinDayRange(t *testing.T) {
 	date, err := dateConverter.EnglishToNepali(2023, 1, 0)
 	assert.Nil(t, date)
 	assert.NotNil(t, err)
+}
 
-	// day greater than month's max day (eg. 40)
-	date, err = dateConverter.EnglishToNepali(2023, 1, 40)
+func TestEnglishToNepaliReturnErrorOnMaxDayRange(t *testing.T) {
+	date, err := dateConverter.EnglishToNepali(2023, 1, 40)
 	assert.Nil(t, date)
 	assert.NotNil(t, err)
 }
@@ -90,26 +90,26 @@ func TestNepaliToEnglishReturnErrorOnMinYearRange(t *testing.T) {
 	assert.NotNil(t, err)
 }
 
-func TestNepaliToEnglishReturnErrorOnInvalidMonth(t *testing.T) {
-	// month 0
+func TestNepaliToEnglishReturnErrorOnMinMonthRange(t *testing.T) {
 	date, err := dateConverter.NepaliToEnglish(2079, 0, 4)
-	assert.Nil(t, date)
-	assert.NotNil(t, err)
-
-	// month greater than 12
-	date, err = dateConverter.NepaliToEnglish(2079, 13, 4)
 	assert.Nil(t, date)
 	assert.NotNil(t, err)
 }
 
-func TestNepaliToEnglishReturnErrorOnInvalidDay(t *testing.T) {
-	// day 0
+func TestNepaliToEnglishReturnErrorOnMaxMonthRange(t *testing.T) {
+	date, err := dateConverter.NepaliToEnglish(2079, 13, 4)
+	assert.Nil(t, date)
+	assert.NotNil(t, err)
+}
+
+func TestNepaliToEnglishReturnErrorOnMinDayRange(t *testing.T) {
 	date, err := dateConverter.NepaliToEnglish(2079, 1, 0)
 	assert.Nil(t, date)
 	assert.NotNil(t, err)
+}
 
-	// day greater than month's max day (eg. 40)
-	date, err = dateConverter.NepaliToEnglish(2079, 1, 40)
+func TestNepaliToEnglishReturnErrorOnMaxDayRange(t *testing.T) {
+	date, err := dateConverter.NepaliToEnglish(2079, 1, 40)
 	assert.Nil(t, date)
 	assert.NotNil(t, err)
 }
