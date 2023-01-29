@@ -18,13 +18,13 @@ type NepaliTime struct {
 }
 
 // String returns a string representing the duration in the form "2079-10-06 01:00:05"
-func (nt NepaliTime) String() string {
-	h, m, s := nt.englishTime.Clock()
+func (obj NepaliTime) String() string {
+	h, m, s := obj.Clock()
 	return fmt.Sprintf(
 		"%d-%s-%s %s:%s:%s",
-		nt.year,
-		twoDigitNumber(nt.month),
-		twoDigitNumber(nt.day),
+		obj.year,
+		twoDigitNumber(obj.month),
+		twoDigitNumber(obj.day),
 		twoDigitNumber(h),
 		twoDigitNumber(m),
 		twoDigitNumber(s),
@@ -32,60 +32,60 @@ func (nt NepaliTime) String() string {
 }
 
 // Get's the corresponding english time
-func (nt NepaliTime) GetEnglishTime() *time.Time {
-	return nt.englishTime
+func (obj NepaliTime) GetEnglishTime() *time.Time {
+	return obj.englishTime
 }
 
 // Date returns the year, month, and day
-func (nt NepaliTime) Date() (year, month, day int) {
-	return nt.year, nt.month, nt.day
+func (obj NepaliTime) Date() (year, month, day int) {
+	return obj.year, obj.month, obj.day
 }
 
 // Year returns the year in which nepalitime occurs.
-func (nt NepaliTime) Year() int {
-	return nt.year
+func (obj NepaliTime) Year() int {
+	return obj.year
 }
 
 // Month returns the month of the year.
-func (nt NepaliTime) Month() int {
-	return nt.month
+func (obj NepaliTime) Month() int {
+	return obj.month
 }
 
 // Day returns the day of the month.
-func (nt NepaliTime) Day() int {
-	return nt.day
+func (obj NepaliTime) Day() int {
+	return obj.day
 }
 
 // Weekday returns the day of the week.
 // Sunday = 0,
 // Monday = 1,
 // Saturday = 6
-func (nt NepaliTime) Weekday() time.Weekday {
-	return nt.englishTime.Weekday()
+func (obj NepaliTime) Weekday() time.Weekday {
+	return obj.englishTime.Weekday()
 }
 
 // Clock returns the hour, minute, and second of the day.
-func (nt NepaliTime) Clock() (hour, min, sec int) {
-	return nt.englishTime.Clock()
+func (obj NepaliTime) Clock() (hour, min, sec int) {
+	return obj.englishTime.Clock()
 }
 
 // Hour returns the hour within the day, in the range [0, 23].
-func (nt NepaliTime) Hour() int {
-	return nt.englishTime.Hour()
+func (obj NepaliTime) Hour() int {
+	return obj.englishTime.Hour()
 }
 
 // Minute returns the minute offset within the hour, in the range [0, 59].
-func (nt NepaliTime) Minute() int {
-	return nt.englishTime.Minute()
+func (obj NepaliTime) Minute() int {
+	return obj.englishTime.Minute()
 }
 
 // Second returns the second offset within the minute, in the range [0, 59].
-func (nt NepaliTime) Second() int {
-	return nt.englishTime.Second()
+func (obj NepaliTime) Second() int {
+	return obj.englishTime.Second()
 }
 
 // Nanosecond returns the nanosecond offset within the second,
 // in the range [0, 999999999].
-func (nt NepaliTime) Nanosecond() int {
-	return nt.englishTime.Nanosecond()
+func (obj NepaliTime) Nanosecond() int {
+	return obj.englishTime.Nanosecond()
 }

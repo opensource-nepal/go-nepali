@@ -23,15 +23,15 @@ func Date(year, month, day, hour, min, sec, nsec int) (*NepaliTime, error) {
 }
 
 // Converts Time object to NepaliTime
-func FromEnglishTime(t time.Time) (*NepaliTime, error) {
-	t = t.In(GetNepaliLocation())
-	enYear, enMonth, enDay := t.Date()
+func FromEnglishTime(englishTime time.Time) (*NepaliTime, error) {
+	englishTime = englishTime.In(GetNepaliLocation())
+	enYear, enMonth, enDay := englishTime.Date()
 	englishDate, err := dateConverter.EnglishToNepali(enYear, int(enMonth), enDay)
 	if err != nil {
 		return nil, err
 	}
 
-	return &NepaliTime{englishDate[0], englishDate[1], englishDate[2], &t}, nil
+	return &NepaliTime{englishDate[0], englishDate[1], englishDate[2], &englishTime}, nil
 }
 
 // Now returns the current nepali time.
