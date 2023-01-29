@@ -1,3 +1,5 @@
+![CI status](https://github.com/sugat009/go-nepali/actions/workflows/nepali-ci.yml/badge.svg?branch=main)
+
 ## Nepali
 This is a `golang` implementation of the package from [aj3sh](https://github.com/aj3sh)'s `python` package [nepali](https://github.com/aj3sh/nepali).
 
