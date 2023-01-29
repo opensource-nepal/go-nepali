@@ -122,3 +122,9 @@ func TestNepaliToEnglishReturnsValidFutureEnglishDate(t *testing.T) {
 	assert.Nil(t, err)
 	assert.EqualValues(t, *date, [3]int{2030, 11, 26})
 }
+
+func TestNepaliToEnglishReturnsValidEnglishLeapYearDate(t *testing.T) {
+	date, err := dateConverter.NepaliToEnglish(2080, 12, 15)
+	assert.Nil(t, err)
+	assert.EqualValues(t, *date, [3]int{2024, 3, 28})
+}

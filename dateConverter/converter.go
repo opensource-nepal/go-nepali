@@ -208,7 +208,7 @@ func EnglishToNepali(year int, month int, day int) (*[3]int, error) {
 	// VALIDATION
 	// checking if date is in range
 	if !checkEnglishDate(year, month, day) {
-		return nil, errors.New("Date is out of range")
+		return nil, errors.New("date is out of range")
 	}
 
 	// REFERENCE
@@ -253,7 +253,7 @@ func NepaliToEnglish(year int, month int, day int) (*[3]int, error) {
 	// VALIDATION
 	// checking if date is in range
 	if !checkNepaliDate(year, month, day) {
-		return nil, errors.New("Date is out of range")
+		return nil, errors.New("date is out of range")
 	}
 
 	// REFERENCE
