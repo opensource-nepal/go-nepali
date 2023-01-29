@@ -29,11 +29,6 @@ func getNepaliTimeReObject() *nepaliTimeRegex {
 
 // validates datetimeStr with the format
 func validate(datetimeStr string, format string) (*NepaliTime, error) {
-	// check if format is correct in itself
-	if _, err := getNepaliTimeReObject().pattern(format); err != nil {
-		return nil, err
-	}
-
 	// validate if parse result is not empty
 	parsedResult, err := extract(datetimeStr, format)
 	if err != nil {
@@ -43,7 +38,7 @@ func validate(datetimeStr string, format string) (*NepaliTime, error) {
 		_, ok2 := parsedResult["y"]
 
 		if !ok1 && !ok2 {
-			return nil, err
+			return nil, errors.New("unable to parse year")
 		}
 	}
 
@@ -127,7 +122,7 @@ func extract(datetimeStr string, format string) (map[string]string, error) {
 //	}
 func transform(data map[string]string) (map[string]int, error) {
 	var (
-		year, weekday                  int
+		year                           int
 		month, day                     int = 1, 1
 		hour, minute, second, fraction int = 0, 0, 0, 0
 	)
@@ -210,24 +205,13 @@ func transform(data map[string]string) (map[string]int, error) {
 		} else if key == "f" {
 			var err error
 
-			s := ""
+			s := val
 			s += strings.Repeat("0", 6-len(val))
 
 			fraction, err = strconv.Atoi(s)
+
 			if err != nil {
 				return nil, errors.New("error while getting nanoseconds data")
-			}
-		} else if key == "w" {
-			intVal, err := strconv.Atoi(val)
-			if err != nil {
-				return nil, errors.New("invalid value in %w")
-			}
-
-			weekday = intVal
-			if weekday == 0 {
-				weekday = 6
-			} else {
-				weekday = -1
 			}
 		}
 	}
@@ -240,6 +224,5 @@ func transform(data map[string]string) (map[string]int, error) {
 		"minute":     minute,
 		"second":     second,
 		"nanosecond": fraction,
-		"weekday":    weekday,
 	}, nil
 }
