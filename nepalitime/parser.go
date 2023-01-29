@@ -13,7 +13,7 @@ func Parse(datetimeStr string, format string) (*NepaliTime, error) {
 	nepalitime, err := validate(datetimeStr, format)
 
 	if err != nil {
-		return nil, errors.New("Datetime string did not match with given format.")
+		return nil, errors.New("datetime string did not match with given format.")
 	}
 
 	return nepalitime, nil
@@ -92,7 +92,7 @@ func extract(datetimeStr string, format string) (map[string]string, error) {
 	match := reCompiledFormat.FindStringSubmatch(datetimeStr)
 
 	if len(match) < 1 {
-		return nil, errors.New("No pattern matched")
+		return nil, errors.New("no pattern matched")
 	}
 
 	result := make(map[string]string)
@@ -136,7 +136,7 @@ func transform(data map[string]string) (map[string]int, error) {
 		if key == "y" {
 			intVal, err := strconv.Atoi(val)
 			if err != nil {
-				return nil, errors.New("Invalid value in %y")
+				return nil, errors.New("invalid value in %y")
 			}
 
 			year = intVal
@@ -144,35 +144,35 @@ func transform(data map[string]string) (map[string]int, error) {
 		} else if key == "Y" {
 			intVal, err := strconv.Atoi(val)
 			if err != nil {
-				return nil, errors.New("Invalid value in %Y")
+				return nil, errors.New("invalid value in %Y")
 			}
 
 			year = intVal
 		} else if key == "m" {
 			intVal, err := strconv.Atoi(val)
 			if err != nil {
-				return nil, errors.New("Invalid value in %Y")
+				return nil, errors.New("invalid value in %Y")
 			}
 
 			month = intVal
 		} else if key == "d" {
 			intVal, err := strconv.Atoi(val)
 			if err != nil {
-				return nil, errors.New("Invalid value in %d")
+				return nil, errors.New("invalid value in %d")
 			}
 
 			day = intVal
 		} else if key == "H" {
 			intVal, err := strconv.Atoi(val)
 			if err != nil {
-				return nil, errors.New("Invalid value in %H")
+				return nil, errors.New("invalid value in %H")
 			}
 
 			hour = intVal
 		} else if key == "I" {
 			intVal, err := strconv.Atoi(val)
 			if err != nil {
-				return nil, errors.New("Invalid value in %I")
+				return nil, errors.New("invalid value in %I")
 			}
 
 			hour = intVal
@@ -196,14 +196,14 @@ func transform(data map[string]string) (map[string]int, error) {
 		} else if key == "M" {
 			intVal, err := strconv.Atoi(val)
 			if err != nil {
-				return nil, errors.New("Invalid value in %M")
+				return nil, errors.New("invalid value in %M")
 			}
 
 			minute = intVal
 		} else if key == "S" {
 			intVal, err := strconv.Atoi(val)
 			if err != nil {
-				return nil, errors.New("Invalid value in %S")
+				return nil, errors.New("invalid value in %S")
 			}
 
 			second = intVal
@@ -215,12 +215,12 @@ func transform(data map[string]string) (map[string]int, error) {
 
 			fraction, err = strconv.Atoi(s)
 			if err != nil {
-				return nil, errors.New("Error while getting nanoseconds data")
+				return nil, errors.New("error while getting nanoseconds data")
 			}
 		} else if key == "w" {
 			intVal, err := strconv.Atoi(val)
 			if err != nil {
-				return nil, errors.New("Invalid value in %w")
+				return nil, errors.New("invalid value in %w")
 			}
 
 			weekday = intVal

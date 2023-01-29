@@ -37,11 +37,11 @@ func newNepaliTimeRegex() *nepaliTimeRegex {
 		"Y": `(?P<Y>\d\d\d\d)`,
 		"z": `(?P<z>[+-]\d\d:?[0-5]\d(:?[0-5]\d(\.\d{1,6})?)?|(?-i:Z))`,
 
-		// "A": self.__seqToRE(EnglishChar.days, "A"),
-		// "a": self.__seqToRE(EnglishChar.days_half, "a"),
-		// "B": self.__seqToRE(EnglishChar.months, "B"),
-		// "b": self.__seqToRE(EnglishChar.months, "b"),
-		// "p": self.__seqToRE(("AM", "PM",), "p"),
+		// "A": obj.__seqToRE(EnglishChar.days, "A"),
+		// "a": obj.__seqToRE(EnglishChar.days_half, "a"),
+		// "B": obj.__seqToRE(EnglishChar.months, "B"),
+		// "b": obj.__seqToRE(EnglishChar.months, "b"),
+		// "p": obj.__seqToRE(("AM", "PM",), "p"),
 		// TODO: implement for the above commented directives
 		"p": "(?P<p>AM|PM)",
 
@@ -52,7 +52,7 @@ func newNepaliTimeRegex() *nepaliTimeRegex {
 }
 
 // Handles conversion from format directives to regexes
-func (this *nepaliTimeRegex) pattern(format string) (string, error) {
+func (obj *nepaliTimeRegex) pattern(format string) (string, error) {
 	processedFormat := ""
 	regexChars := regexp.MustCompile(`([\.^$*+?\(\){}\[\]|])`)
 	format = regexChars.ReplaceAllString(format, `\$1`)
@@ -76,11 +76,11 @@ func (this *nepaliTimeRegex) pattern(format string) (string, error) {
 
 		directiveToCheck := string(format[directiveIndex : directiveIndex+indexIncrement])
 
-		if val, ok := this.PatternMap[directiveToCheck]; ok {
+		if val, ok := obj.PatternMap[directiveToCheck]; ok {
 			processedFormat = fmt.Sprintf("%s%s%s", processedFormat, string(format[:directiveIndex-1]), val)
 			format = string(format[directiveIndex+indexIncrement:])
 		} else {
-			return "", errors.New("No pattern matched")
+			return "", errors.New("no pattern matched")
 		}
 	}
 
@@ -90,8 +90,8 @@ func (this *nepaliTimeRegex) pattern(format string) (string, error) {
 }
 
 // handles regex compilation for format string
-func (this *nepaliTimeRegex) compile(format string) (*regexp.Regexp, error) {
-	processedFormat, err := this.pattern(format)
+func (obj *nepaliTimeRegex) compile(format string) (*regexp.Regexp, error) {
+	processedFormat, err := obj.pattern(format)
 
 	if err != nil {
 		return nil, err

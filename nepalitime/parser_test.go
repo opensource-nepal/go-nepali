@@ -23,8 +23,8 @@ func TestParseWithYmdSlashFormat(t *testing.T) {
 
 	got, err := nepalitime.Parse(datetimeStr, format)
 
-	assert.Equal(t, expected, got.String(), fmt.Sprintf("Expected: %s - Got: %s", expected, got))
-	assert.Nil(t, err, "Error should be nil")
+	assert.Equal(t, expected, got.String(), fmt.Sprintf("expected: %s - got: %s", expected, got))
+	assert.Nil(t, err, "error should be nil")
 }
 
 func TestParserWithymdSlashFormat(t *testing.T) {
@@ -36,8 +36,8 @@ func TestParserWithymdSlashFormat(t *testing.T) {
 
 	got, err := nepalitime.Parse(datetimeStr, format)
 
-	assert.Equal(t, expected, got.String(), fmt.Sprintf("Expected: %s - Got: %s", expected, got))
-	assert.Nil(t, err, "Error should be nil")
+	assert.Equal(t, expected, got.String(), fmt.Sprintf("expected: %s - got: %s", expected, got))
+	assert.Nil(t, err, "error should be nil")
 }
 
 func TestParserWithdmYSlashForm(t *testing.T) {
@@ -49,8 +49,8 @@ func TestParserWithdmYSlashForm(t *testing.T) {
 
 	got, err := nepalitime.Parse(datetimeStr, format)
 
-	assert.Equal(t, expected, got.String(), fmt.Sprintf("Expected: %s - Got: %s", expected, got))
-	assert.Nil(t, err, "Error should be nil")
+	assert.Equal(t, expected, got.String(), fmt.Sprintf("expected: %s - got: %s", expected, got))
+	assert.Nil(t, err, "error should be nil")
 }
 
 func TestParserWithdmySlashForm(t *testing.T) {
@@ -62,8 +62,8 @@ func TestParserWithdmySlashForm(t *testing.T) {
 
 	got, err := nepalitime.Parse(datetimeStr, format)
 
-	assert.Equal(t, expected, got.String(), fmt.Sprintf("Expected: %s - Got: %s", expected, got))
-	assert.Nil(t, err, "Error should be nil")
+	assert.Equal(t, expected, got.String(), fmt.Sprintf("expected: %s - got: %s", expected, got))
+	assert.Nil(t, err, "error should be nil")
 }
 
 func TestParserWithmdYSlashForm(t *testing.T) {
@@ -75,8 +75,8 @@ func TestParserWithmdYSlashForm(t *testing.T) {
 
 	got, err := nepalitime.Parse(datetimeStr, format)
 
-	assert.Equal(t, expected, got.String(), fmt.Sprintf("Expected: %s - Got: %s", expected, got))
-	assert.Nil(t, err, "Error should be nil")
+	assert.Equal(t, expected, got.String(), fmt.Sprintf("expected: %s - got: %s", expected, got))
+	assert.Nil(t, err, "error should be nil")
 }
 
 func TestParserWithmdySlashForm(t *testing.T) {
@@ -88,8 +88,8 @@ func TestParserWithmdySlashForm(t *testing.T) {
 
 	got, err := nepalitime.Parse(datetimeStr, format)
 
-	assert.Equal(t, expected, got.String(), fmt.Sprintf("Expected: %s - Got: %s", expected, got))
-	assert.Nil(t, err, "Error should be nil")
+	assert.Equal(t, expected, got.String(), fmt.Sprintf("expected: %s - got: %s", expected, got))
+	assert.Nil(t, err, "error should be nil")
 }
 
 func TestParseWithYmdDashFormat(t *testing.T) {
@@ -101,8 +101,8 @@ func TestParseWithYmdDashFormat(t *testing.T) {
 
 	got, err := nepalitime.Parse(datetimeStr, format)
 
-	assert.Equal(t, expected, got.String(), fmt.Sprintf("Expected: %s - Got: %s", expected, got))
-	assert.Nil(t, err, "Error should be nil")
+	assert.Equal(t, expected, got.String(), fmt.Sprintf("expected: %s - got: %s", expected, got))
+	assert.Nil(t, err, "error should be nil")
 }
 
 func TestParserWithymdDashFormat(t *testing.T) {
@@ -114,8 +114,8 @@ func TestParserWithymdDashFormat(t *testing.T) {
 
 	got, err := nepalitime.Parse(datetimeStr, format)
 
-	assert.Equal(t, expected, got.String(), fmt.Sprintf("Expected: %s - Got: %s", expected, got))
-	assert.Nil(t, err, "Error should be nil")
+	assert.Equal(t, expected, got.String(), fmt.Sprintf("expected: %s - got: %s", expected, got))
+	assert.Nil(t, err, "error should be nil")
 }
 
 func TestParserWithdmYDashForm(t *testing.T) {
@@ -127,8 +127,8 @@ func TestParserWithdmYDashForm(t *testing.T) {
 
 	got, err := nepalitime.Parse(datetimeStr, format)
 
-	assert.Equal(t, expected, got.String(), fmt.Sprintf("Expected: %s - Got: %s", expected, got))
-	assert.Nil(t, err, "Error should be nil")
+	assert.Equal(t, expected, got.String(), fmt.Sprintf("expected: %s - got: %s", expected, got))
+	assert.Nil(t, err, "error should be nil")
 }
 
 func TestParserWithdmyDashForm(t *testing.T) {
@@ -140,8 +140,8 @@ func TestParserWithdmyDashForm(t *testing.T) {
 
 	got, err := nepalitime.Parse(datetimeStr, format)
 
-	assert.Equal(t, expected, got.String(), fmt.Sprintf("Expected: %s - Got: %s", expected, got))
-	assert.Nil(t, err, "Error should be nil")
+	assert.Equal(t, expected, got.String(), fmt.Sprintf("expected: %s - got: %s", expected, got))
+	assert.Nil(t, err, "error should be nil")
 }
 
 func TestParserWithmdYDashForm(t *testing.T) {
@@ -153,8 +153,8 @@ func TestParserWithmdYDashForm(t *testing.T) {
 
 	got, err := nepalitime.Parse(datetimeStr, format)
 
-	assert.Equal(t, expected, got.String(), fmt.Sprintf("Expected: %s - Got: %s", expected, got))
-	assert.Nil(t, err, "Error should be nil")
+	assert.Equal(t, expected, got.String(), fmt.Sprintf("expected: %s - got: %s", expected, got))
+	assert.Nil(t, err, "error should be nil")
 }
 
 func TestParserWithmdyDashForm(t *testing.T) {
@@ -166,8 +166,8 @@ func TestParserWithmdyDashForm(t *testing.T) {
 
 	got, err := nepalitime.Parse(datetimeStr, format)
 
-	assert.Equal(t, expected, got.String(), fmt.Sprintf("Expected: %s - Got: %s", expected, got))
-	assert.Nil(t, err, "Error should be nil")
+	assert.Equal(t, expected, got.String(), fmt.Sprintf("expected: %s - got: %s", expected, got))
+	assert.Nil(t, err, "error should be nil")
 }
 
 func TestParserWithYmdHMSForm(t *testing.T) {
@@ -179,8 +179,8 @@ func TestParserWithYmdHMSForm(t *testing.T) {
 
 	got, err := nepalitime.Parse(datetimeStr, format)
 
-	assert.Equal(t, expected, got.String(), fmt.Sprintf("Expected: %s - Got: %s", expected, got))
-	assert.Nil(t, err, "Error should be nil")
+	assert.Equal(t, expected, got.String(), fmt.Sprintf("expected: %s - got: %s", expected, got))
+	assert.Nil(t, err, "error should be nil")
 }
 
 func TestParserWithYmdIMSForm(t *testing.T) {
@@ -192,8 +192,8 @@ func TestParserWithYmdIMSForm(t *testing.T) {
 
 	got, err := nepalitime.Parse(datetimeStr, format)
 
-	assert.Equal(t, expected, got.String(), fmt.Sprintf("Expected: %s - Got: %s", expected, got))
-	assert.Nil(t, err, "Error should be nil")
+	assert.Equal(t, expected, got.String(), fmt.Sprintf("expected: %s - got: %s", expected, got))
+	assert.Nil(t, err, "error should be nil")
 }
 
 func TestParseWithSpecialCharacters(t *testing.T) {
@@ -205,8 +205,8 @@ func TestParseWithSpecialCharacters(t *testing.T) {
 
 	got, err := nepalitime.Parse(datetimeStr, format)
 
-	assert.Equal(t, expected, got.String(), fmt.Sprintf("Expected: %s - Got: %s", expected, got))
-	assert.Nil(t, err, "Error should be nil")
+	assert.Equal(t, expected, got.String(), fmt.Sprintf("expected: %s - got: %s", expected, got))
+	assert.Nil(t, err, "error should be nil")
 }
 
 func TestParseWithSpecialCharactersBetweenYearAndMonth(t *testing.T) {
@@ -217,8 +217,8 @@ func TestParseWithSpecialCharactersBetweenYearAndMonth(t *testing.T) {
 
 	got, err := nepalitime.Parse(datetimeStr, format)
 
-	assert.Equal(t, expected, got.String(), fmt.Sprintf("Expected: %s - Got: %s", expected, got))
-	assert.Nil(t, err, "Error should be nil")
+	assert.Equal(t, expected, got.String(), fmt.Sprintf("expected: %s - got: %s", expected, got))
+	assert.Nil(t, err, "error should be nil")
 }
 
 func TestParseWithErrornousFormats(t *testing.T) {
@@ -228,7 +228,7 @@ func TestParseWithErrornousFormats(t *testing.T) {
 	got, err := nepalitime.Parse(datetimeStr, format)
 
 	assert.Nil(t, got, "NepaliTime object should be nil")
-	assert.EqualError(t, err, "Datetime string did not match with given format.", "Error message did not match")
+	assert.EqualError(t, err, "datetime string did not match with given format.", "error message did not match")
 }
 
 func TestParseWithRandomFormats(t *testing.T) {
@@ -238,5 +238,5 @@ func TestParseWithRandomFormats(t *testing.T) {
 	got, err := nepalitime.Parse(datetimeStr, format)
 
 	assert.Nil(t, got, "NepaliTime object should be nil")
-	assert.EqualError(t, err, "Datetime string did not match with given format.", "Error message did not match")
+	assert.EqualError(t, err, "datetime string did not match with given format.", "error message did not match")
 }
