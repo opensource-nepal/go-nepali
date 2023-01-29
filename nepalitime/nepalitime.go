@@ -6,6 +6,9 @@ import (
 	"time"
 )
 
+// NOTE:
+// Only Date() and FromEnglishTime() from utils are supposed to create NepaliTime object
+
 type NepaliTime struct {
 	// note that these members represent nepali values
 	year        int

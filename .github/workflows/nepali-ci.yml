@@ -7,7 +7,6 @@ on:
   push:
     branches: [ "main", "release/*", "unit_tests"]
   pull_request:
-    branches: [ "main", "release/*", "unit_tests"]
 
 jobs:
 
@@ -25,4 +24,4 @@ jobs:
       run: go build -v ./...
 
     - name: Test
-      run: go test -v ./...
+      run: go test -v ./... -cover

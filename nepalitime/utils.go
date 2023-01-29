@@ -8,9 +8,6 @@ import (
 	"github.com/sugat009/nepali/dateConverter"
 )
 
-// NOTE:
-// Only Date() and FromTime() are supposed to create NepaliTime object
-
 // Date returns the Time corresponding to
 //
 // yyyy-mm-dd hh:mm:ss + nsec nanoseconds
@@ -20,13 +17,14 @@ func Date(year, month, day, hour, min, sec, nsec int) (*NepaliTime, error) {
 		return nil, err
 	}
 
-	location, _ := time.LoadLocation(constants.Timezone)
-	englishTime := time.Date(englishDate[0], time.Month(englishDate[1]), englishDate[2], hour, min, sec, nsec, location)
+	englishTime := time.Date(englishDate[0], time.Month(englishDate[1]), englishDate[2],
+		hour, min, sec, nsec, GetNepaliLocation())
 	return &NepaliTime{year, month, day, &englishTime}, nil
 }
 
 // Converts Time object to NepaliTime
-func FromTime(t time.Time) (*NepaliTime, error) {
+func FromEnglishTime(t time.Time) (*NepaliTime, error) {
+	t = t.In(GetNepaliLocation())
 	enYear, enMonth, enDay := t.Date()
 	englishDate, err := dateConverter.EnglishToNepali(enYear, int(enMonth), enDay)
 	if err != nil {
@@ -40,7 +38,7 @@ func FromTime(t time.Time) (*NepaliTime, error) {
 // this function should always work
 // and should not return nil in normal circumstances
 func Now() *NepaliTime {
-	now, _ := FromTime(GetCurrentEnglishTime(""))
+	now, _ := FromEnglishTime(GetCurrentEnglishTime())
 
 	return now
 }
@@ -59,17 +57,15 @@ func twoDigitNumber(number int) string {
 	return fmt.Sprint(number)
 }
 
-// Gets current English date(tarik) along with time level precision
-// Also, takes in a format parameter which can define how you want
-// your output to be. If you want the default format then pass in
-// an empty string
-func GetCurrentEnglishTime(format string) time.Time {
+// Gets current English date along with time level precision.
+// Current Time of Asia/Kathmandu
+func GetCurrentEnglishTime() time.Time {
+	return time.Now().In(GetNepaliLocation())
+}
+
+// Returns location for Asia/Kathmandu (constants.Timezone)
+func GetNepaliLocation() *time.Location {
 	location, _ := time.LoadLocation(constants.Timezone)
-	currentTime := time.Now().In(location)
-
-	if format != "" {
-		currentTime.Format(format)
-	}
-
-	return currentTime
+	// ignoring error since location with Asia/Kathmandu will not fail.
+	return location
 }
