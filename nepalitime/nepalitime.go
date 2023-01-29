@@ -54,6 +54,9 @@ func (nt NepaliTime) Day() int {
 }
 
 // Weekday returns the day of the week.
+// Sunday = 0,
+// Monday = 1,
+// Saturday = 6
 func (nt NepaliTime) Weekday() time.Weekday {
 	return nt.englishTime.Weekday()
 }
