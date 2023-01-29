@@ -221,14 +221,14 @@ func TestParseWithSpecialCharactersBetweenYearAndMonth(t *testing.T) {
 	assert.Nil(t, err, "error should be nil")
 }
 
-func TestParseWithErrornousFormats(t *testing.T) {
+func TestParseWithErrorNousFormats(t *testing.T) {
 	datetimeStr := "2079/10/14"
 	format := "%y-%m-%d"
 
 	got, err := nepalitime.Parse(datetimeStr, format)
 
 	assert.Nil(t, got, "NepaliTime object should be nil")
-	assert.EqualError(t, err, "datetime string did not match with given format.", "error message did not match")
+	assert.EqualError(t, err, "datetime string did not match with given format", "error message did not match")
 }
 
 func TestParseWithRandomFormats(t *testing.T) {
@@ -238,5 +238,5 @@ func TestParseWithRandomFormats(t *testing.T) {
 	got, err := nepalitime.Parse(datetimeStr, format)
 
 	assert.Nil(t, got, "NepaliTime object should be nil")
-	assert.EqualError(t, err, "datetime string did not match with given format.", "error message did not match")
+	assert.EqualError(t, err, "datetime string did not match with given format", "error message did not match")
 }

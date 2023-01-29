@@ -13,7 +13,7 @@ func Parse(datetimeStr string, format string) (*NepaliTime, error) {
 	nepalitime, err := validate(datetimeStr, format)
 
 	if err != nil {
-		return nil, errors.New("datetime string did not match with given format.")
+		return nil, errors.New("datetime string did not match with given format")
 	}
 
 	return nepalitime, nil

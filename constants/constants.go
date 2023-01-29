@@ -1,6 +1,5 @@
 package constants
 
 const (
-    Timezone string = "Asia/Kathmandu"
+	Timezone string = "Asia/Kathmandu"
 )
-
