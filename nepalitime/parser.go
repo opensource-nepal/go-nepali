@@ -6,7 +6,7 @@ import (
 	"strings"
 )
 
-var nepaliTimeReCache *NepaliTimeRe
+var nepaliTimeReCache *nepaliTimeRegex
 
 // equivalent to time.Parse()
 func Parse(datetimeStr string, format string) (*NepaliTime, error) {
@@ -19,9 +19,9 @@ func Parse(datetimeStr string, format string) (*NepaliTime, error) {
 	return nepalitime, nil
 }
 
-func getNepaliTimeReObject() *NepaliTimeRe {
+func getNepaliTimeReObject() *nepaliTimeRegex {
 	if nepaliTimeReCache == nil {
-		nepaliTimeReCache = NewNepaliTimeRe()
+		nepaliTimeReCache = newNepaliTimeRegex()
 	}
 
 	return nepaliTimeReCache
@@ -30,7 +30,7 @@ func getNepaliTimeReObject() *NepaliTimeRe {
 // validates datetimeStr with the format
 func validate(datetimeStr string, format string) (*NepaliTime, error) {
 	// check if format is correct in itself
-	if _, err := getNepaliTimeReObject().Pattern(format); err != nil {
+	if _, err := getNepaliTimeReObject().pattern(format); err != nil {
 		return nil, err
 	}
 
@@ -83,7 +83,7 @@ func validate(datetimeStr string, format string) (*NepaliTime, error) {
 //		"d": 12,
 //	}
 func extract(datetimeStr string, format string) (map[string]string, error) {
-	reCompiledFormat, err := getNepaliTimeReObject().Compile(format)
+	reCompiledFormat, err := getNepaliTimeReObject().compile(format)
 
 	if err != nil {
 		return nil, err

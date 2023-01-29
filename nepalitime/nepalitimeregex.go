@@ -8,13 +8,13 @@ import (
 	"strings"
 )
 
-type NepaliTimeRe struct {
+type nepaliTimeRegex struct {
 	PatternMap map[string]string
 }
 
 // nepaliTimeRe constructor
-func NewNepaliTimeRe() *NepaliTimeRe {
-	obj := new(NepaliTimeRe)
+func newNepaliTimeRegex() *nepaliTimeRegex {
+	obj := new(nepaliTimeRegex)
 	obj.PatternMap = map[string]string{
 		"d":  `(?P<d>3[0-2]|[1-2]\d|0[1-9]|[1-9]| [1-9])`,
 		"-d": `(?P<d>3[0-2]|[1-2]\d|0[1-9]|[1-9]| [1-9])`, // same as "d"
@@ -52,7 +52,7 @@ func NewNepaliTimeRe() *NepaliTimeRe {
 }
 
 // Handles conversion from format directives to regexes
-func (this *NepaliTimeRe) Pattern(format string) (string, error) {
+func (this *nepaliTimeRegex) pattern(format string) (string, error) {
 	processedFormat := ""
 	regexChars := regexp.MustCompile(`([\.^$*+?\(\){}\[\]|])`)
 	format = regexChars.ReplaceAllString(format, `\$1`)
@@ -90,8 +90,8 @@ func (this *NepaliTimeRe) Pattern(format string) (string, error) {
 }
 
 // handles regex compilation for format string
-func (this *NepaliTimeRe) Compile(format string) (*regexp.Regexp, error) {
-	processedFormat, err := this.Pattern(format)
+func (this *nepaliTimeRegex) compile(format string) (*regexp.Regexp, error) {
+	processedFormat, err := this.pattern(format)
 
 	if err != nil {
 		return nil, err
