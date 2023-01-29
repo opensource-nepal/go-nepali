@@ -6,6 +6,9 @@ import (
 	"time"
 )
 
+// NOTE:
+// Only Date() and FromEnglishTime() from utils are supposed to create NepaliTime object
+
 type NepaliTime struct {
 	// note that these members represent nepali values
 	year        int
@@ -54,6 +57,9 @@ func (nt NepaliTime) Day() int {
 }
 
 // Weekday returns the day of the week.
+// Sunday = 0,
+// Monday = 1,
+// Saturday = 6
 func (nt NepaliTime) Weekday() time.Weekday {
 	return nt.englishTime.Weekday()
 }
