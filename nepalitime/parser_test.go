@@ -273,7 +273,7 @@ func TestParseForInvalidYear(t *testing.T) {
 	got, err := nepalitime.Parse(datetimeStr, format)
 
 	assert.Nil(t, got, "NepaliTime object should be nil")
-	assert.EqualError(t, err, "datetime string did not match with given format.", "error message did not match")
+	assert.EqualError(t, err, "datetime string did not match with given format", "error message did not match")
 }
 
 func TestParseForValidYear(t *testing.T) {
@@ -307,7 +307,7 @@ func TestParseWithValidRegexFormat(t *testing.T) {
 	format := `(?P<Y>\d\d\d\d)`
 	got, err := nepalitime.Parse(datetimeStr, format)
 	assert.Nil(t, got, "NepaliTime object should be nil")
-	assert.EqualError(t, err, "datetime string did not match with given format.", "error message did not match")
+	assert.EqualError(t, err, "datetime string did not match with given format", "error message did not match")
 }
 
 func TestParseFor12AM(t *testing.T) {
