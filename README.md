@@ -35,7 +35,12 @@ In this package, we provide 2 `go` packages, `nepalitime` and `dateConverter`.
       npTime, err := nepalitime.Date(2079,  10,  15,  14,  29,  6,  7)
       ```
 
-      The `err` object could containg error if you pass in errornous values into the `Date` function.
+      The `err` object could containing error if you pass in errornous values into the `Date` function.
+      
+      Once you have the `NepaliTime` object, you will be able to access methods, some of which are described below:
+      1. `GetEnglishTime()` -> Returns the corresponding English time
+      2. `Date()` -> Returns year, month and day as separate return values
+      3. `Clock()` -> Returns hour, minute and second as separate return values
 
    2. If you already have a `time.Time` object then, you can get the corresponding `NepaliTime` object using the function `FromEnglishTime`:
 
