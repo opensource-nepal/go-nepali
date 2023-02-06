@@ -4,9 +4,9 @@ import (
 	"testing"
 	"time"
 
+	"github.com/opensource-nepal/nepali/constants"
+	"github.com/opensource-nepal/nepali/nepalitime"
 	"github.com/stretchr/testify/assert"
-	"github.com/sugat009/nepali/constants"
-	"github.com/sugat009/nepali/nepalitime"
 )
 
 func TestDateFunctionWithInvalidDateAndTimeArgument(t *testing.T) {

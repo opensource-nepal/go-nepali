@@ -1,14 +1,14 @@
 // Unit tests for date converter
 //
 // To run only this test
-// go test -v github.com/sugat009/nepali/dateConverter
+// go test -v github.com/opensource-nepal/nepali/dateConverter
 package dateConverter_test
 
 import (
 	"testing"
 
+	"github.com/opensource-nepal/nepali/dateConverter"
 	"github.com/stretchr/testify/assert"
-	"github.com/sugat009/nepali/dateConverter"
 )
 
 // EnglishToNepali

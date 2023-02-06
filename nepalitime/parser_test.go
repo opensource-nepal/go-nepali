@@ -4,8 +4,8 @@ import (
 	"fmt"
 	"testing"
 
+	"github.com/opensource-nepal/nepali/nepalitime"
 	"github.com/stretchr/testify/assert"
-	"github.com/sugat009/nepali/nepalitime"
 )
 
 // TODO: currently we only provide a read-only
