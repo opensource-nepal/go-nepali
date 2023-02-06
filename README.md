@@ -1,6 +1,11 @@
-![CI status](https://github.com/opensource-nepal/go-nepali/actions/workflows/nepali-ci.yml/badge.svg?branch=main)
-
 ## Nepali
+
+[![CI status](https://github.com/opensource-nepal/go-nepali/actions/workflows/nepali-ci.yml/badge.svg?branch=main)](https://github.com/opensource-nepal/go-nepali/actions)
+[![codecov](https://codecov.io/gh/opensource-nepal/go-nepali/branch/main/graph/badge.svg?token=PTUHYWCJ4I)](https://codecov.io/gh/opensource-nepal/go-nepali)
+[![Release](https://img.shields.io/github/v/release/opensource-nepal/go-nepali?label=Latest)](https://github.com/opensource-nepal/go-nepali/releases)
+[![License](https://img.shields.io/github/license/opensource-nepal/go-nepali?label=License)](https://github.com/opensource-nepal/go-nepali/blob/main/LICENSE)
+
+
 This is a `golang` implementation of the package from [opensource-nepal](https://github.com/opensource-nepal)'s `python` package [nepali](https://github.com/opensource-nepal/py-nepali).
 
 We'll try to include all the features provided in the aforementioned package. We'll be releasing features in parts to support all or most features given by `go`'s `time` package.
