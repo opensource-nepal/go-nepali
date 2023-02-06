@@ -23,4 +23,10 @@ jobs:
         run: go build -v ./...
 
       - name: Test
-        run: go test -v ./... -cover
+        run: go test -race -coverprofile=coverage.txt -covermode=atomic -v ./...
+
+      - name: Send coverage to CodeCov
+        uses: codecov/codecov-action@v3
+        with:
+          fail_ci_if_error: true
+          verbose: true
