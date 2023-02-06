@@ -1,16 +1,16 @@
 // Unit tests for NepaliTime object
 //
 // To run only this test
-// go test -v github.com/sugat009/nepali/nepalitime
+// go test -v github.com/opensource-nepal/nepali/nepalitime
 package nepalitime_test
 
 import (
 	"testing"
 	"time"
 
+	"github.com/opensource-nepal/nepali/constants"
+	"github.com/opensource-nepal/nepali/nepalitime"
 	"github.com/stretchr/testify/assert"
-	"github.com/sugat009/nepali/constants"
-	"github.com/sugat009/nepali/nepalitime"
 )
 
 // Not supposed to be changed.
