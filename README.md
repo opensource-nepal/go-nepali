@@ -1,4 +1,4 @@
-![CI status](https://github.com/sugat009/go-nepali/actions/workflows/nepali-ci.yml/badge.svg?branch=main)
+![CI status](https://github.com/opensource-nepal/go-nepali/actions/workflows/nepali-ci.yml/badge.svg?branch=main)
 
 ## Nepali
 This is a `golang` implementation of the package from [opensource-nepal](https://github.com/opensource-nepal)'s `python` package [nepali](https://github.com/opensource-nepal/py-nepali).
