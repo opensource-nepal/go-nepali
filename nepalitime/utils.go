@@ -4,8 +4,8 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/opensource-nepal/nepali/constants"
-	"github.com/opensource-nepal/nepali/dateConverter"
+	"github.com/opensource-nepal/go-nepali/constants"
+	"github.com/opensource-nepal/go-nepali/dateConverter"
 )
 
 // Date returns the Time corresponding to

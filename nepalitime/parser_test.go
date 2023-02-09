@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"testing"
 
-	"github.com/opensource-nepal/nepali/nepalitime"
+	"github.com/opensource-nepal/go-nepali/nepalitime"
 	"github.com/stretchr/testify/assert"
 )
 

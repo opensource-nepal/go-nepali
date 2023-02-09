@@ -1,4 +1,4 @@
-module github.com/opensource-nepal/nepali
+module github.com/opensource-nepal/go-nepali
 
 go 1.19
 

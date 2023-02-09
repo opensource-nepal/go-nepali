@@ -15,13 +15,13 @@ We'll try to include all the features provided in the aforementioned package. We
 To install this package use `go get`
 
 ```shell
-$ go get -u github.com/opensource-nepal/nepali
+$ go get -u github.com/opensource-nepal/go-nepali
 ```
 
 Or if there is some error then, use `go install`
 
 ```shell
-$ go install github.com/opensource-nepal/nepali
+$ go install github.com/opensource-nepal/go-nepali
 ```
 
 #### Usage
@@ -35,7 +35,7 @@ In this package, we provide 2 `go` packages, `nepalitime` and `dateConverter`.
    1. To get a Nepali datetime object:
 
       ```go
-      import "github.com/opensource-nepal/nepali/nepalitime"
+      import "github.com/opensource-nepal/go-nepali/nepalitime"
 
       npTime, err := nepalitime.Date(2079,  10,  15,  14,  29,  6,  7)
       ```
@@ -50,7 +50,7 @@ In this package, we provide 2 `go` packages, `nepalitime` and `dateConverter`.
    2. If you already have a `time.Time` object then, you can get the corresponding `NepaliTime` object using the function `FromEnglishTime`:
 
       ```go
-      import "github.com/opensource-nepal/nepali/nepalitime"
+      import "github.com/opensource-nepal/go-nepali/nepalitime"
 
       // just to ensure that the timezone is Asia/Kathmandu
       // else the time will be adjusted accordingly
@@ -61,7 +61,7 @@ In this package, we provide 2 `go` packages, `nepalitime` and `dateConverter`.
    3. To parse a datestring into a `NepaliTime` object the `Parse` function can be used. This is the Nepali equivalent of the `time.Parse` function of go but instead of using the time parsing format of `Mon Jan 2 15:04:05 -0700 MST 2006` we decided to go with the `%Y/%m/%d` style parsing. We intend on supporting the go style formatting in the upcoming releases. Please see [directives](#date-directives) section to know which directives we support.
 
       ```go
-      import "github.com/opensource-nepal/nepali/nepalitime"
+      import "github.com/opensource-nepal/go-nepali/nepalitime"
 
       datetimeStr := "2079/10/14"
       format := "%Y/%m/%d"
@@ -72,7 +72,7 @@ In this package, we provide 2 `go` packages, `nepalitime` and `dateConverter`.
    4. To get current Nepali time:
 
       ```go
-      import "github.com/opensource-nepal/nepali/nepalitime"
+      import "github.com/opensource-nepal/go-nepali/nepalitime"
 
       npTime := nepalitime.Now()
       ```
@@ -80,7 +80,7 @@ In this package, we provide 2 `go` packages, `nepalitime` and `dateConverter`.
    5. To get the current English time in Nepal:
 
       ```go
-      import "github.com/opensource-nepal/nepali/nepalitime"
+      import "github.com/opensource-nepal/go-nepali/nepalitime"
 
       enTime := nepalitime.GetCurrentEnglishTime()
       ```
@@ -90,7 +90,7 @@ In this package, we provide 2 `go` packages, `nepalitime` and `dateConverter`.
    1. This is one of the core functionalities in which an English date(not an object) is converted to Nepali date in parts i.e. year, month, day in an array:
 
       ```go
-      import "github.com/opensource-nepal/nepali/nepalitime"
+      import "github.com/opensource-nepal/go-nepali/nepalitime"
 
       // npDate is an array of 3 length which contains
       // year, month and day sequential form
@@ -100,7 +100,7 @@ In this package, we provide 2 `go` packages, `nepalitime` and `dateConverter`.
    2. To convert a Nepali date(not an object) to English date in parts i.e. year, month, day in an array:
 
       ```go
-      import "github.com/opensource-nepal/nepali/nepalitime"
+      import "github.com/opensource-nepal/go-nepali/nepalitime"
 
       // enDate is an array of 3 length which contains
       // year, month and day sequential form
