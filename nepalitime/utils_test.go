@@ -4,8 +4,8 @@ import (
 	"testing"
 	"time"
 
-	"github.com/opensource-nepal/nepali/constants"
-	"github.com/opensource-nepal/nepali/nepalitime"
+	"github.com/opensource-nepal/go-nepali/constants"
+	"github.com/opensource-nepal/go-nepali/nepalitime"
 	"github.com/stretchr/testify/assert"
 )
 
