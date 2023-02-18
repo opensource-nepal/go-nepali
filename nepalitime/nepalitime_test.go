@@ -17,6 +17,7 @@ import (
 // Most of the tests depend on it.
 // Used for caching purpose.
 var globalNepaliTime, _ = nepalitime.Date(2079, 10, 14, 16, 23, 17, 0)
+var globalNepaliTimeLeadingZeros, _ = nepalitime.Date(2079, 01, 02, 03, 04, 05, 111)
 
 func TestNepaliTimeString(t *testing.T) {
 	assert.Equal(t, globalNepaliTime.String(), "2079-10-14 16:23:17")
@@ -84,4 +85,17 @@ func TestNepaliTimeSecond(t *testing.T) {
 
 func TestNepaliTimeNanosecond(t *testing.T) {
 	assert.Equal(t, globalNepaliTime.Nanosecond(), 0)
+}
+
+func TestNepaliTimeFormat(t *testing.T) {
+	res, _ := globalNepaliTime.Format("%Y/%m/%d")
+
+	assert.Equal(t, "2079/10/14", res, "%Y/%m/%d formatting did not match")
+}
+
+func TestNepaliTimeFormatReturnErrorOnInvalidFormat(t *testing.T) {
+	res, err := globalNepaliTime.Format("%k")
+
+	assert.Equal(t, "", res, "response should be empty string")
+	assert.EqualError(t, err, "error while formatting NepaliTime with given format", "error message on formatting error did not match")
 }

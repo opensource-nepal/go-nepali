@@ -32,7 +32,7 @@ In this package, we provide 2 `go` packages, `nepalitime` and `dateConverter`.
 
 1. `nepalitime`: The functionalities provided in `nepalitime` are described below:
 
-   1. To get a Nepali datetime object:
+   1. To get a NepaliTime object:
 
       ```go
       import "github.com/opensource-nepal/go-nepali/nepalitime"
@@ -84,6 +84,19 @@ In this package, we provide 2 `go` packages, `nepalitime` and `dateConverter`.
 
       enTime := nepalitime.GetCurrentEnglishTime()
       ```
+   
+   6. To format the NepaliTime object to a string that you want.
+      ```go
+      
+      import (
+        "fmt"
+        "github.com/opensource-nepal/go-nepali/nepalitime"
+      )
+      
+      npTime, _ := nepalitime.Date(2079,  10,  15,  14,  29,  6,  7, 123)
+      fmt.Println(npTime.Format("%Y/%m/%d %H:%M:%S:%f"))
+      ```
+      _Please see [directives](#date-directives) section to know which directives we support._
 
 2. `dateConverter`: The functionalities provided in `dateConverter` are described below:
 
