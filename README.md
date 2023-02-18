@@ -122,19 +122,28 @@ In this package, we provide 2 `go` packages, `nepalitime` and `dateConverter`.
 
 #### Date Directives
 
-| Directive | Meaning                                                   | Example                                  |
-| --------- | --------------------------------------------------------- | ---------------------------------------- |
-| `%d`      | Day of the month as a zero-padded decimal number.         | 01, 02, …, 31                            |
-| `%m`      | Month as a zero-padded decimal number.                    | 01, 02, …, 12                            |
-| `%y`      | Year without century as a zero-padded decimal number.     | 00, 01, …, 99                            |
-| `%Y`      | Year with century as a decimal number.                    | 0001, 0002, …, 2078, 2079, …, 9998, 9999 |
-| `%H`      | Hour (24-hour clock) as a zero-padded decimal number.     | 00, 01, …, 23                            |
-| `%I`      | Hour (12-hour clock) as a zero-padded decimal number.     | 01, 02, …, 12                            |
-| `%p`      | Locale’s equivalent of either AM or PM.                   | AM, PM (en_US);<br><br>am, pm (de_DE)    |
-| `%M`      | Minute as a zero-padded decimal number.                   | 00, 01, …, 59                            |
-| `%S`      | Second as a zero-padded decimal number.                   | 00, 01, …, 59                            |
-| `%f`      | Microsecond as a decimal number, zero-padded to 6 digits. | 000000, 000001, …, 999999                |
-| `%%`      | A literal `'%'` character.                                | %                                        |
+| Directive | Meaning                                                  | Example                                  |
+|-----------|----------------------------------------------------------|------------------------------------------|
+| `%d`      | Day of the month as a zero-padded decimal number.        | 01, 02, …, 31                            |
+| `%-d`     | Day of the month as a decimal number.                    | 1, 2, …, 31                              |
+| `%m`      | Month as a zero-padded decimal number.                   | 01, 02, …, 12                            |
+| `%-m`     | Month as a decimal number.                               | 1, 2, …, 12                              |
+| `%y`      | Year without century as a zero-padded decimal number.    | 00, 01, …, 99                            |
+| `%-y`     | Year without century as a decimal number.                | 0, 1, …, 99                              |
+| `%Y`      | Year with century as a zero-padded decimal number.       | 0001, 0002, …, 2078, 2079, …, 9998, 9999 |
+| `%-Y`     | Year with century as a decimal number.                   | 1, 2, …, 2078, 2079, …, 9998, 9999       |
+| `%H`      | Hour (24-hour clock) as a zero-padded decimal number.    | 00, 01, …, 23                            |
+| `%-H`     | Hour (24-hour clock) as a decimal number.                | 0, 1, …, 23                              |
+| `%I`      | Hour (12-hour clock) as a zero-padded decimal number.    | 01, 02, …, 12                            |
+| `%-I`     | Hour (12-hour clock) as a decimal number.                | 1, 2, …, 12                              |
+| `%p`      | Locale’s equivalent of either AM or PM.                  | AM, PM (en_US);<br><br>am, pm (de_DE)    |
+| `%M`      | Minute as a zero-padded decimal number.                  | 00, 01, …, 59                            |
+| `%-M`     | Minute as a decimal number.                              | 0, 1, …, 59                              |
+| `%S`      | Second as a zero-padded decimal number.                  | 00, 01, …, 59                            |
+| `%-S`     | Second as a decimal number.                              | 0, 1, …, 59                              |
+| `%f`      | Nanosecond as a decimal number, zero-padded to 6 digits. | 000000, 000001, …, 999999                |
+| `%-f`     | Nanosecond as a decimal number.                          | 0, 1, …, 999999                          |
+| `%%`      | A literal `'%'` character.                               | %                                        |
 
 ## Contribution
 
