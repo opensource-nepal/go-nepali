@@ -67,6 +67,18 @@ func TestEnglishToNepaliReturnsValidFutureNepaliDate(t *testing.T) {
 	assert.EqualValues(t, *date, [3]int{2087, 8, 10})
 }
 
+func TestEnglishToNepaliForMinEdgeDate(t *testing.T) {
+	date, err := dateConverter.EnglishToNepali(1944, 1, 1)
+	assert.Nil(t, err)
+	assert.EqualValues(t, *date, [3]int{2000, 9, 17})
+}
+
+func TestEnglishToNepaliForMaxEdgeDate(t *testing.T) {
+	date, err := dateConverter.EnglishToNepali(2042, 12, 31)
+	assert.Nil(t, err)
+	assert.EqualValues(t, *date, [3]int{2099, 9, 16})
+}
+
 // NepaliToEnglish
 
 func TestNepaliToEnglishReturnErrorOnMaxYearRange(t *testing.T) {
@@ -127,4 +139,16 @@ func TestNepaliToEnglishReturnsValidEnglishLeapYearDate(t *testing.T) {
 	date, err := dateConverter.NepaliToEnglish(2080, 12, 15)
 	assert.Nil(t, err)
 	assert.EqualValues(t, *date, [3]int{2024, 3, 28})
+}
+
+func TestNepaliToEnglishForMinEdgeDate(t *testing.T) {
+	date, err := dateConverter.NepaliToEnglish(2000, 1, 1)
+	assert.Nil(t, err)
+	assert.EqualValues(t, *date, [3]int{1943, 4, 14})
+}
+
+func TestNepaliToEnglishForMaxEdgeDate(t *testing.T) {
+	date, err := dateConverter.NepaliToEnglish(2099, 12, 30)
+	assert.Nil(t, err)
+	assert.EqualValues(t, *date, [3]int{2043, 4, 13})
 }
