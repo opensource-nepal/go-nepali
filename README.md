@@ -26,13 +26,13 @@ $ go install github.com/opensource-nepal/go-nepali
 
 #### Usage
 
-_NOTE: Currently this package is in beta version, so it only includes basic features like date conversion and parsing. Also, the output is read-only._
+_NOTE: Currently this package is in beta version, so it only includes basic features like date conversion, formatting and parsing. Also, the output is read-only._
 
 In this package, we provide 2 `go` packages, `nepalitime` and `dateConverter`.
 
 1. `nepalitime`: The functionalities provided in `nepalitime` are described below:
 
-   1. To get a NepaliTime object:
+   1. To get a `NepaliTime` object:
 
       ```go
       import "github.com/opensource-nepal/go-nepali/nepalitime"
@@ -40,7 +40,7 @@ In this package, we provide 2 `go` packages, `nepalitime` and `dateConverter`.
       npTime, err := nepalitime.Date(2079,  10,  15,  14,  29,  6,  7)
       ```
 
-      The `err` object could containing error if you pass in errornous values into the `Date` function.
+      The `err` object could containing error if you pass in errorneous values into the `Date` function.
       
       Once you have the `NepaliTime` object, you will be able to access methods, some of which are described below:
       1. `GetEnglishTime()` -> Returns the corresponding English time
@@ -58,7 +58,7 @@ In this package, we provide 2 `go` packages, `nepalitime` and `dateConverter`.
       nt, err := nepalitime.FromEnglishTime(enTime)
       ```
 
-   3. To parse a datestring into a `NepaliTime` object the `Parse` function can be used. This is the Nepali equivalent of the `time.Parse` function of go but instead of using the time parsing format of `Mon Jan 2 15:04:05 -0700 MST 2006` we decided to go with the `%Y/%m/%d` style parsing. We intend on supporting the go style formatting in the upcoming releases. Please see [directives](#date-directives) section to know which directives we support.
+   3. To parse a date string into a `NepaliTime` object the `Parse` function can be used. This is the Nepali equivalent of the `time.Parse` function of go but instead of using the time parsing format of `Mon Jan 2 15:04:05 -0700 MST 2006` we decided to go with the `%Y/%m/%d` style parsing. We intend on supporting the go style formatting in the upcoming releases. Please see [directives](#date-directives) section to know which directives we support.
 
       ```go
       import "github.com/opensource-nepal/go-nepali/nepalitime"
@@ -85,7 +85,7 @@ In this package, we provide 2 `go` packages, `nepalitime` and `dateConverter`.
       enTime := nepalitime.GetCurrentEnglishTime()
       ```
    
-   6. To format the NepaliTime object to a string that you want.
+   6. To format the `NepaliTime` object to a string that you want.
       ```go
       
       import (
