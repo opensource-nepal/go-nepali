@@ -103,7 +103,7 @@ In this package, we provide 2 `go` packages, `nepalitime` and `dateConverter`.
    1. This is one of the core functionalities in which an English date(not an object) is converted to Nepali date in parts i.e. year, month, day in an array:
 
       ```go
-      import "github.com/opensource-nepal/go-nepali/nepalitime"
+      import "github.com/opensource-nepal/go-nepali/dateConverter"
 
       // npDate is an array of 3 length which contains
       // year, month and day sequential form
@@ -113,7 +113,7 @@ In this package, we provide 2 `go` packages, `nepalitime` and `dateConverter`.
    2. To convert a Nepali date(not an object) to English date in parts i.e. year, month, day in an array:
 
       ```go
-      import "github.com/opensource-nepal/go-nepali/nepalitime"
+      import "github.com/opensource-nepal/go-nepali/dateConverter"
 
       // enDate is an array of 3 length which contains
       // year, month and day sequential form
