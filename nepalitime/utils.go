@@ -17,7 +17,7 @@ func Date(year, month, day, hour, min, sec, nsec int) (*NepaliTime, error) {
 		return nil, err
 	}
 
-	englishTime := time.Date(englishDate[0], time.Month(englishDate[1]), englishDate[2],
+	englishTime := time.Date(englishDate.Year, time.Month(englishDate.Month), englishDate.Day,
 		hour, min, sec, nsec, GetNepaliLocation())
 	return &NepaliTime{year, month, day, &englishTime}, nil
 }
@@ -31,7 +31,7 @@ func FromEnglishTime(englishTime time.Time) (*NepaliTime, error) {
 		return nil, err
 	}
 
-	return &NepaliTime{englishDate[0], englishDate[1], englishDate[2], &englishTime}, nil
+	return &NepaliTime{englishDate.Year, englishDate.Month, englishDate.Day, &englishTime}, nil
 }
 
 // Now returns the current nepali time.
