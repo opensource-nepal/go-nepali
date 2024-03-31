@@ -263,7 +263,7 @@ func TestParseWithRandomFormats(t *testing.T) {
 	got, err := nepalitime.Parse(datetimeStr, format)
 
 	assert.Nil(t, got, "NepaliTime object should be nil")
-	assert.EqualError(t, err, "datetime string did not match with given format", "error message did not match")
+	assert.EqualError(t, err, "the format '%k' isn't supported", "error message did not match")
 }
 
 func TestParseForInvalidYear(t *testing.T) {
@@ -273,7 +273,7 @@ func TestParseForInvalidYear(t *testing.T) {
 	got, err := nepalitime.Parse(datetimeStr, format)
 
 	assert.Nil(t, got, "NepaliTime object should be nil")
-	assert.EqualError(t, err, "datetime string did not match with given format", "error message did not match")
+	assert.EqualError(t, err, "date is out of range", "error message did not match")
 }
 
 func TestParseForValidYear(t *testing.T) {
