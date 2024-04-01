@@ -88,14 +88,13 @@ func TestNepaliTimeNanosecond(t *testing.T) {
 }
 
 func TestNepaliTimeFormat(t *testing.T) {
-	res, _ := globalNepaliTime.Format("%Y/%m/%d")
+	res := globalNepaliTime.Format("%Y/%m/%d")
 
 	assert.Equal(t, "2079/10/14", res, "%Y/%m/%d formatting did not match")
 }
 
-func TestNepaliTimeFormatReturnErrorOnInvalidFormat(t *testing.T) {
-	res, err := globalNepaliTime.Format("%k")
+func TestNepaliTimeFormatReturnAsItIsOnUnknownFormat(t *testing.T) {
+	res := globalNepaliTime.Format("%k")
 
-	assert.Equal(t, "", res, "response should be empty string")
-	assert.EqualError(t, err, "error while formatting NepaliTime with given format", "error message on formatting error did not match")
+	assert.Equal(t, "%k", res, "Unknown format didn't returned as it is")
 }
