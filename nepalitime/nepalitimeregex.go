@@ -2,7 +2,6 @@
 package nepalitime
 
 import (
-	"errors"
 	"fmt"
 	"regexp"
 	"strings"
@@ -80,7 +79,7 @@ func (obj *nepaliTimeRegex) pattern(format string) (string, error) {
 			processedFormat = fmt.Sprintf("%s%s%s", processedFormat, string(format[:directiveIndex-1]), val)
 			format = string(format[directiveIndex+indexIncrement:])
 		} else {
-			return "", errors.New("no pattern matched")
+			return "", fmt.Errorf("the format '%%%s' isn't supported", directiveToCheck)
 		}
 	}
 

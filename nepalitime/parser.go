@@ -13,7 +13,7 @@ func Parse(datetimeStr string, format string) (*NepaliTime, error) {
 	nepalitime, err := validate(datetimeStr, format)
 
 	if err != nil {
-		return nil, errors.New("datetime string did not match with given format")
+		return nil, err
 	}
 
 	return nepalitime, nil
@@ -87,7 +87,7 @@ func extract(datetimeStr string, format string) (map[string]string, error) {
 	match := reCompiledFormat.FindStringSubmatch(datetimeStr)
 
 	if len(match) < 1 {
-		return nil, errors.New("no pattern matched")
+		return nil, errors.New("datetime string did not match with given format")
 	}
 
 	result := make(map[string]string)
@@ -211,7 +211,7 @@ func transform(data map[string]string) (map[string]int, error) {
 			fraction, err = strconv.Atoi(s)
 
 			if err != nil {
-				return nil, errors.New("error while getting nanoseconds data")
+				return nil, errors.New("invalid value in %f")
 			}
 		}
 	}
