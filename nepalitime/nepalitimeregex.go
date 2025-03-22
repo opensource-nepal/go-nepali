@@ -35,10 +35,8 @@ func newNepaliTimeRegex() *nepaliTimeRegex {
 		"y": `(?P<y>\d\d)`,
 		"Y": `(?P<Y>\d\d\d\d)`,
 		"z": `(?P<z>[+-]\d\d:?[0-5]\d(:?[0-5]\d(\.\d{1,6})?)?|(?-i:Z))`,
-
-		// "A": obj.__seqToRE(EnglishChar.days, "A"),
-		// "a": obj.__seqToRE(EnglishChar.days_half, "a"),
-		// "B": obj.__seqToRE(EnglishChar.months, "B"),
+		"B": `(?P<B>Baisakh|Jestha|Ashadh|Shrawan|Bhadra|Ashwin|Kartik|Mangsir|Poush|Magh|Falgun|Chaitra")`,
+		"A": `(?P<B>Sunday|Monday|Tuesday|Wednesday|Thursday|Friday|Saturday)`,
 		// "b": obj.__seqToRE(EnglishChar.months, "b"),
 		// "p": obj.__seqToRE(("AM", "PM",), "p"),
 		// TODO: implement for the above commented directives

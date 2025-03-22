@@ -4,6 +4,8 @@ import (
 	"errors"
 	"strconv"
 	"strings"
+
+	"github.com/opensource-nepal/go-nepali/constants"
 )
 
 var nepaliTimeReCache *nepaliTimeRegex
@@ -157,6 +159,19 @@ func transform(data map[string]string) (map[string]int, error) {
 			}
 
 			day = intVal
+		} else if key == "B" {
+			intVal := 0
+			for i, m := range constants.NepaliMonths {
+				if m == val {
+					intVal = i + 1
+					break
+				}
+			}
+			if intVal == 0 {
+				return nil, errors.New("invalid value in %B")
+			}
+
+			month = intVal
 		} else if key == "H" {
 			intVal, err := strconv.Atoi(val)
 			if err != nil {

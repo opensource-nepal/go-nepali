@@ -35,6 +35,27 @@ func TestNepaliFormatterFormatdmySlash(t *testing.T) {
 	assert.Equal(t, "14/10/79", res, "%d/%m/%y did not match")
 }
 
+func TestNepaliFormatterFormatdBYSlash(t *testing.T) {
+	formatter := nepalitime.NewFormatter(globalNepaliTime)
+	res := formatter.Format("%d/%B/%Y")
+
+	assert.Equal(t, "14/Magh/2079", res, "%d/%B/%Y did not match")
+}
+
+func TestNepaliFormatterFormatdBYAComma(t *testing.T) {
+	formatter := nepalitime.NewFormatter(globalNepaliTime)
+	res := formatter.Format("%d %B, %Y, %A")
+
+	assert.Equal(t, "14 Magh, 2079, Saturday", res, "%d %B, %Y, %A did not match")
+}
+
+func TestNepaliFormatterFormatdBYaComma(t *testing.T) {
+	formatter := nepalitime.NewFormatter(globalNepaliTime)
+	res := formatter.Format("%d %B, %Y, %a")
+
+	assert.Equal(t, "14 Magh, 2079, Sat", res, "%d %B, %Y, %a did not match")
+}
+
 func TestNepaliFormatterFormatmdYSlash(t *testing.T) {
 	formatter := nepalitime.NewFormatter(globalNepaliTime)
 	res := formatter.Format("%m/%d/%Y")
@@ -75,6 +96,27 @@ func TestNepaliFormatterFormatdmyDash(t *testing.T) {
 	res := formatter.Format("%d-%m-%y")
 
 	assert.Equal(t, "14-10-79", res, "%d-%m-%y did not match")
+}
+
+func TestNepaliFormatterFormatdBYDash(t *testing.T) {
+	formatter := nepalitime.NewFormatter(globalNepaliTime)
+	res := formatter.Format("%d-%B-%Y")
+
+	assert.Equal(t, "14-Magh-2079", res, "%d-%B-%Y-%A did not match")
+}
+
+func TestNepaliFormatterFormatdBYADash(t *testing.T) {
+	formatter := nepalitime.NewFormatter(globalNepaliTime)
+	res := formatter.Format("%d-%B-%Y-%A")
+
+	assert.Equal(t, "14-Magh-2079-Saturday", res, "%d-%B-%Y-%A did not match")
+}
+
+func TestNepaliFormatterFormatdBYaDash(t *testing.T) {
+	formatter := nepalitime.NewFormatter(globalNepaliTime)
+	res := formatter.Format("%d-%B-%Y-%a")
+
+	assert.Equal(t, "14-Magh-2079-Sat", res, "%d-%B-%Y-%a did not match")
 }
 
 func TestNepaliFormatterFormatmdYDash(t *testing.T) {

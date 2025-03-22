@@ -3,6 +3,8 @@ package nepalitime
 import (
 	"strconv"
 	"strings"
+
+	"github.com/opensource-nepal/go-nepali/constants"
 )
 
 func NewFormatter(nepaliTime *NepaliTime) *NepaliFormatter {
@@ -58,6 +60,12 @@ func (obj *NepaliFormatter) getFormatString(directive string) string {
 		return obj.monthNumber()
 	case "-m":
 		return obj.monthNumberNonzero()
+	case "B":
+		return obj.monthName()
+	case "A":
+		return obj.weekDayFull()
+	case "a":
+		return obj.weekDayHalf()
 	case "y":
 		return obj.yearHalf()
 	case "Y":
@@ -117,6 +125,21 @@ func (obj *NepaliFormatter) monthNumber() string {
 	}
 
 	return month
+}
+
+// %B
+func (obj *NepaliFormatter) monthName() string {
+	return constants.NepaliMonths[obj.nepaliTime.month-1]
+}
+
+// %A
+func (obj *NepaliFormatter) weekDayFull() string {
+	return obj.nepaliTime.Weekday().String()
+}
+
+// %a
+func (obj *NepaliFormatter) weekDayHalf() string {
+	return obj.nepaliTime.Weekday().String()[:3]
 }
 
 // %-m
