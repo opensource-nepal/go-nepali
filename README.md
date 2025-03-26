@@ -128,6 +128,9 @@ In this package, we provide 2 `go` packages, `nepalitime` and `dateConverter`.
 | `%-d`     | Day of the month as a decimal number.                    | 1, 2, …, 31                              |
 | `%m`      | Month as a zero-padded decimal number.                   | 01, 02, …, 12                            |
 | `%-m`     | Month as a decimal number.                               | 1, 2, …, 12                              |
+| `%B`      | Month as a string                                        | Baisakh, Jestha, ..., Chaitra            |
+| `%A`      | Full name of day of the week                             | Sunday, Monday, ..., Saturday            |
+| `%a`      | Half name of day of the week                             | Sun, Mon, ..., Sat                       |
 | `%y`      | Year without century as a zero-padded decimal number.    | 00, 01, …, 99                            |
 | `%-y`     | Year without century as a decimal number.                | 0, 1, …, 99                              |
 | `%Y`      | Year with century as a zero-padded decimal number.       | 0001, 0002, …, 2078, 2079, …, 9998, 9999 |

@@ -66,6 +66,19 @@ func TestParserWithdmySlashForm(t *testing.T) {
 	assert.Nil(t, err, "error should be nil")
 }
 
+func TestParserWithdBYSlashForm(t *testing.T) {
+	// 2079 magh 14
+	datetimeStr := "14/Magh/2079"
+	format := "%d/%B/%Y"
+
+	expected := "2079-10-14 00:00:00"
+
+	got, err := nepalitime.Parse(datetimeStr, format)
+
+	assert.Equal(t, expected, got.String(), fmt.Sprintf("expected: %s - got: %s", expected, got))
+	assert.Nil(t, err, "error should be nil")
+}
+
 func TestParserWithmdYSlashForm(t *testing.T) {
 	// 2079 magh 14
 	datetimeStr := "10/14/2079"
