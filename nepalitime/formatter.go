@@ -1,9 +1,10 @@
 package nepalitime
 
 import (
-	"errors"
 	"strconv"
 	"strings"
+
+	"github.com/opensource-nepal/go-nepali/constants"
 )
 
 func NewFormatter(nepaliTime *NepaliTime) *NepaliFormatter {
@@ -14,7 +15,7 @@ type NepaliFormatter struct {
 	nepaliTime *NepaliTime
 }
 
-func (obj *NepaliFormatter) Format(format string) (string, error) {
+func (obj *NepaliFormatter) Format(format string) string {
 	index, num, timeStr := 0, len(format), ""
 
 	for index < num {
@@ -32,17 +33,11 @@ func (obj *NepaliFormatter) Format(format string) (string, error) {
 				if (index + 1) < num {
 					index++
 					char = string(format[index])
-					res, err := obj.getFormatString(specialChar + char)
-					if err != nil {
-						return "", errors.New("error while formatting NepaliTime with given format")
-					}
+					res := obj.getFormatString(specialChar + char)
 					timeStr += res
 				}
 			} else {
-				res, err := obj.getFormatString(char)
-				if err != nil {
-					return "", errors.New("error while formatting NepaliTime with given format")
-				}
+				res := obj.getFormatString(char)
 				timeStr += res
 			}
 			index++
@@ -51,48 +46,55 @@ func (obj *NepaliFormatter) Format(format string) (string, error) {
 		}
 	}
 
-	return timeStr, nil
+	return timeStr
 }
 
 // utility method that operates based on the type of directive
-func (obj *NepaliFormatter) getFormatString(directive string) (string, error) {
+func (obj *NepaliFormatter) getFormatString(directive string) string {
 	switch directive {
 	case "d":
-		return obj.day_(), nil
+		return obj.day_()
 	case "-d":
-		return obj.dayNonzero(), nil
+		return obj.dayNonzero()
 	case "m":
-		return obj.monthNumber(), nil
+		return obj.monthNumber()
 	case "-m":
-		return obj.monthNumberNonzero(), nil
+		return obj.monthNumberNonzero()
+	case "B":
+		return obj.monthName()
+	case "A":
+		return obj.weekDayFull()
+	case "a":
+		return obj.weekDayHalf()
 	case "y":
-		return obj.yearHalf(), nil
+		return obj.yearHalf()
 	case "Y":
-		return obj.yearFull(), nil
+		return obj.yearFull()
 	case "H":
-		return obj.hour24(), nil
+		return obj.hour24()
 	case "-H":
-		return obj.hour24Nonzero(), nil
+		return obj.hour24Nonzero()
 	case "I":
-		return obj.hour12(), nil
+		return obj.hour12()
 	case "-I":
-		return obj.hour12Nonzero(), nil
+		return obj.hour12Nonzero()
 	case "p":
-		return obj.ampm(), nil
+		return obj.ampm()
 	case "M":
-		return obj.minute(), nil
+		return obj.minute()
 	case "-M":
-		return obj.minuteNonzero(), nil
+		return obj.minuteNonzero()
 	case "S":
-		return obj.second(), nil
+		return obj.second()
 	case "-S":
-		return obj.secondNonzero(), nil
+		return obj.secondNonzero()
 	case "f":
-		return obj.nanosecond_(), nil
+		return obj.nanosecond_()
 	case "-f":
-		return obj.nanosecondNonZero(), nil
+		return obj.nanosecondNonZero()
 	default:
-		return "", errors.New("error while getting format string for passed directive")
+		// if not match return the directive
+		return "%" + directive
 	}
 }
 
@@ -123,6 +125,21 @@ func (obj *NepaliFormatter) monthNumber() string {
 	}
 
 	return month
+}
+
+// %B
+func (obj *NepaliFormatter) monthName() string {
+	return constants.NepaliMonths[obj.nepaliTime.month-1]
+}
+
+// %A
+func (obj *NepaliFormatter) weekDayFull() string {
+	return obj.nepaliTime.Weekday().String()
+}
+
+// %a
+func (obj *NepaliFormatter) weekDayHalf() string {
+	return obj.nepaliTime.Weekday().String()[:3]
 }
 
 // %-m

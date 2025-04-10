@@ -66,6 +66,19 @@ func TestParserWithdmySlashForm(t *testing.T) {
 	assert.Nil(t, err, "error should be nil")
 }
 
+func TestParserWithdBYSlashForm(t *testing.T) {
+	// 2079 magh 14
+	datetimeStr := "14/Magh/2079"
+	format := "%d/%B/%Y"
+
+	expected := "2079-10-14 00:00:00"
+
+	got, err := nepalitime.Parse(datetimeStr, format)
+
+	assert.Equal(t, expected, got.String(), fmt.Sprintf("expected: %s - got: %s", expected, got))
+	assert.Nil(t, err, "error should be nil")
+}
+
 func TestParserWithmdYSlashForm(t *testing.T) {
 	// 2079 magh 14
 	datetimeStr := "10/14/2079"
@@ -263,7 +276,7 @@ func TestParseWithRandomFormats(t *testing.T) {
 	got, err := nepalitime.Parse(datetimeStr, format)
 
 	assert.Nil(t, got, "NepaliTime object should be nil")
-	assert.EqualError(t, err, "datetime string did not match with given format", "error message did not match")
+	assert.EqualError(t, err, "the format '%k' isn't supported", "error message did not match")
 }
 
 func TestParseForInvalidYear(t *testing.T) {
@@ -273,7 +286,7 @@ func TestParseForInvalidYear(t *testing.T) {
 	got, err := nepalitime.Parse(datetimeStr, format)
 
 	assert.Nil(t, got, "NepaliTime object should be nil")
-	assert.EqualError(t, err, "datetime string did not match with given format", "error message did not match")
+	assert.EqualError(t, err, "date is out of range", "error message did not match")
 }
 
 func TestParseForValidYear(t *testing.T) {

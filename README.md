@@ -26,13 +26,13 @@ $ go install github.com/opensource-nepal/go-nepali
 
 #### Usage
 
-_NOTE: Currently this package is in beta version, so it only includes basic features like date conversion and parsing. Also, the output is read-only._
+_NOTE: Currently this package is in beta version, so it only includes basic features like date conversion, formatting and parsing. Also, the output is read-only._
 
 In this package, we provide 2 `go` packages, `nepalitime` and `dateConverter`.
 
 1. `nepalitime`: The functionalities provided in `nepalitime` are described below:
 
-   1. To get a NepaliTime object:
+   1. To get a `NepaliTime` object:
 
       ```go
       import "github.com/opensource-nepal/go-nepali/nepalitime"
@@ -40,7 +40,7 @@ In this package, we provide 2 `go` packages, `nepalitime` and `dateConverter`.
       npTime, err := nepalitime.Date(2079,  10,  15,  14,  29,  6,  7)
       ```
 
-      The `err` object could containing error if you pass in errornous values into the `Date` function.
+      The `err` object could containing error if you pass in errorneous values into the `Date` function.
       
       Once you have the `NepaliTime` object, you will be able to access methods, some of which are described below:
       1. `GetEnglishTime()` -> Returns the corresponding English time
@@ -58,7 +58,7 @@ In this package, we provide 2 `go` packages, `nepalitime` and `dateConverter`.
       nt, err := nepalitime.FromEnglishTime(enTime)
       ```
 
-   3. To parse a datestring into a `NepaliTime` object the `Parse` function can be used. This is the Nepali equivalent of the `time.Parse` function of go but instead of using the time parsing format of `Mon Jan 2 15:04:05 -0700 MST 2006` we decided to go with the `%Y/%m/%d` style parsing. We intend on supporting the go style formatting in the upcoming releases. Please see [directives](#date-directives) section to know which directives we support.
+   3. To parse a date string into a `NepaliTime` object the `Parse` function can be used. This is the Nepali equivalent of the `time.Parse` function of go but instead of using the time parsing format of `Mon Jan 2 15:04:05 -0700 MST 2006` we decided to go with the `%Y/%m/%d` style parsing. We intend on supporting the go style formatting in the upcoming releases. Please see [directives](#date-directives) section to know which directives we support.
 
       ```go
       import "github.com/opensource-nepal/go-nepali/nepalitime"
@@ -85,7 +85,7 @@ In this package, we provide 2 `go` packages, `nepalitime` and `dateConverter`.
       enTime := nepalitime.GetCurrentEnglishTime()
       ```
    
-   6. To format the NepaliTime object to a string that you want.
+   6. To format the `NepaliTime` object to a string that you want.
       ```go
       
       import (
@@ -103,7 +103,7 @@ In this package, we provide 2 `go` packages, `nepalitime` and `dateConverter`.
    1. This is one of the core functionalities in which an English date(not an object) is converted to Nepali date in parts i.e. year, month, day in an array:
 
       ```go
-      import "github.com/opensource-nepal/go-nepali/nepalitime"
+      import "github.com/opensource-nepal/go-nepali/dateConverter"
 
       // npDate is an array of 3 length which contains
       // year, month and day sequential form
@@ -113,7 +113,7 @@ In this package, we provide 2 `go` packages, `nepalitime` and `dateConverter`.
    2. To convert a Nepali date(not an object) to English date in parts i.e. year, month, day in an array:
 
       ```go
-      import "github.com/opensource-nepal/go-nepali/nepalitime"
+      import "github.com/opensource-nepal/go-nepali/dateConverter"
 
       // enDate is an array of 3 length which contains
       // year, month and day sequential form
@@ -128,6 +128,9 @@ In this package, we provide 2 `go` packages, `nepalitime` and `dateConverter`.
 | `%-d`     | Day of the month as a decimal number.                    | 1, 2, …, 31                              |
 | `%m`      | Month as a zero-padded decimal number.                   | 01, 02, …, 12                            |
 | `%-m`     | Month as a decimal number.                               | 1, 2, …, 12                              |
+| `%B`      | Month as a string                                        | Baisakh, Jestha, ..., Chaitra            |
+| `%A`      | Full name of day of the week                             | Sunday, Monday, ..., Saturday            |
+| `%a`      | Half name of day of the week                             | Sun, Mon, ..., Sat                       |
 | `%y`      | Year without century as a zero-padded decimal number.    | 00, 01, …, 99                            |
 | `%-y`     | Year without century as a decimal number.                | 0, 1, …, 99                              |
 | `%Y`      | Year with century as a zero-padded decimal number.       | 0001, 0002, …, 2078, 2079, …, 9998, 9999 |
