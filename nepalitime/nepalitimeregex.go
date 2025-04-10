@@ -1,4 +1,4 @@
-// contains functionality related to Nepali time pattern matching
+// Package nepalitime contains functionality related to Nepali time pattern matching
 package nepalitime
 
 import (
