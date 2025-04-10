@@ -22,7 +22,7 @@ func Date(year, month, day, hour, min, sec, nsec int) (*NepaliTime, error) {
 	return &NepaliTime{year, month, day, &englishTime}, nil
 }
 
-// Converts Time object to NepaliTime
+// FromEnglishTime Converts Time object to NepaliTime
 func FromEnglishTime(englishTime time.Time) (*NepaliTime, error) {
 	englishTime = englishTime.In(GetNepaliLocation())
 	enYear, enMonth, enDay := englishTime.Date()
@@ -57,13 +57,13 @@ func twoDigitNumber(number int) string {
 	return fmt.Sprint(number)
 }
 
-// Gets current English date along with time level precision.
+// GetCurrentEnglishTime Gets current English date along with time level precision.
 // Current Time of Asia/Kathmandu
 func GetCurrentEnglishTime() time.Time {
 	return time.Now().In(GetNepaliLocation())
 }
 
-// Returns location for Asia/Kathmandu (constants.Timezone)
+// GetNepaliLocation Returns location for Asia/Kathmandu (constants.Timezone)
 func GetNepaliLocation() *time.Location {
 	location, _ := time.LoadLocation(constants.Timezone)
 	// ignoring error since location with Asia/Kathmandu will not fail.

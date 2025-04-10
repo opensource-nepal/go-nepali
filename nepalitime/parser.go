@@ -8,7 +8,7 @@ import (
 
 var nepaliTimeReCache *nepaliTimeRegex
 
-// equivalent to time.Parse()
+// Parse is equivalent to time.Parse()
 func Parse(datetimeStr string, format string) (*NepaliTime, error) {
 	nepalitime, err := validate(datetimeStr, format)
 

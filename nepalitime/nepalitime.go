@@ -90,7 +90,7 @@ func (obj *NepaliTime) Nanosecond() int {
 	return obj.englishTime.Nanosecond()
 }
 
-// formats the nepalitime object into the passed format
+// Format formats the nepalitime object into the passed format
 func (obj *NepaliTime) Format(format string) (string, error) {
 	formatter := NewFormatter(obj)
 
