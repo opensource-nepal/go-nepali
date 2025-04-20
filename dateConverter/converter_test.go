@@ -79,6 +79,16 @@ func TestEnglishToNepaliForMaxEdgeDate(t *testing.T) {
 	assert.EqualValues(t, *date, [3]int{2099, 9, 16})
 }
 
+func TestEnglishToNepaliSpecificDate(t *testing.T) {
+	// Test conversion of 2001 Oct 31 to Nepali date
+	year, month, day := 2001, 10, 31
+	expected := [3]int{2058, 7, 15}
+
+	result, err := dateConverter.EnglishToNepali(year, month, day)
+	assert.Nil(t, err, "Error should be nil")
+	assert.Equal(t, expected, *result, "Converted Nepali date did not match expected value")
+}
+
 // NepaliToEnglish
 
 func TestNepaliToEnglishReturnErrorOnMaxYearRange(t *testing.T) {

@@ -49,6 +49,12 @@ func (obj *NepaliFormatter) Format(format string) string {
 	return timeStr
 }
 
+// Extend NepaliFormatter to support Go-style layouts
+func (obj *NepaliFormatter) FormatGoLayout(layout string) string {
+	englishTime := obj.nepaliTime.GetEnglishTime()
+	return englishTime.Format(layout)
+}
+
 // utility method that operates based on the type of directive
 func (obj *NepaliFormatter) getFormatString(directive string) string {
 	switch directive {

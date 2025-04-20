@@ -332,3 +332,20 @@ func TestParseFor12AM(t *testing.T) {
 	assert.Nil(t, err, "error should be nil")
 	assert.Equal(t, got.String(), "2079-10-14 00:00:00")
 }
+
+func TestParseGoLayout(t *testing.T) {
+	layout := "Jan 2, 2006 at 3:04pm (MST)"
+
+	nt, err := nepalitime.ParseGoLayout(layout)
+	assert.Nil(t, err, "Error should be nil")
+	assert.NotNil(t, nt, "NepaliTime object should not be nil")
+
+	// Validate the parsed date matches the current system date (April 20, 2025)
+	expectedYear := 2082
+	expectedMonth := 1
+	expectedDay := 7
+
+	assert.Equal(t, expectedYear, nt.Year(), "Year did not match")
+	assert.Equal(t, expectedMonth, nt.Month(), "Month did not match")
+	assert.Equal(t, expectedDay, nt.Day(), "Day did not match")
+}

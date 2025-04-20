@@ -324,3 +324,13 @@ func TestNepaliFormatterFormatHourGreaterThan12(t *testing.T) {
 
 	assert.Equal(t, "2079/11/04 1::10::11::000123", res, "%Y/%m/%d %-I::%M::%S::%f did not match")
 }
+
+func TestFormatGoLayout(t *testing.T) {
+	layout := "Jan 2, 2006 at 3:04pm (MST)"
+	nt, _ := nepalitime.Date(2079, 10, 15, 14, 29, 6, 7)
+	formatter := nepalitime.NewFormatter(nt)
+
+	formatted := formatter.FormatGoLayout(layout)
+	assert.NotEmpty(t, formatted, "Formatted string should not be empty")
+	// Add specific assertions based on expected output
+}

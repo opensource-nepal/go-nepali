@@ -4,6 +4,7 @@ import (
 	"errors"
 	"strconv"
 	"strings"
+	"time"
 
 	"github.com/opensource-nepal/go-nepali/constants"
 )
@@ -19,6 +20,16 @@ func Parse(datetimeStr string, format string) (*NepaliTime, error) {
 	}
 
 	return nepalitime, nil
+}
+
+// Updated ParseGoLayout to only use layout
+func ParseGoLayout(layout string) (*NepaliTime, error) {
+	currentTime := time.Now()
+	parsedTime, err := time.Parse(layout, currentTime.Format(layout))
+	if err != nil {
+		return nil, err
+	}
+	return FromEnglishTime(parsedTime)
 }
 
 func getNepaliTimeReObject() *nepaliTimeRegex {
