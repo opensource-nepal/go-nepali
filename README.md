@@ -98,6 +98,38 @@ In this package, we provide 2 `go` packages, `nepalitime` and `dateConverter`.
       ```
       _Please see [directives](#date-directives) section to know which directives we support._
 
+   7. Parsing Go-Style Layouts
+
+      You can parse a date string using a Go-style layout with the `ParseGoLayout` function:
+
+      ```go
+      import "github.com/opensource-nepal/go-nepali/nepalitime"
+
+      layout := "Jan 2, 2006 at 3:04pm (MST)"
+
+      npTime, err := nepalitime.ParseGoLayout(layout)
+      if err != nil {
+          // Handle error
+      }
+      ```
+
+   8. Formatting Go-Style Layouts
+
+      You can format a `NepaliTime` object into a Go-style layout string using the `FormatGoLayout` method:
+
+      ```go
+      import "github.com/opensource-nepal/go-nepali/nepalitime"
+
+      npTime, _ := nepalitime.Date(2079, 10, 15, 14, 29, 6, 7)
+      layout := "Jan 2, 2006 at 3:04pm (MST)"
+
+      formatter := nepalitime.NewFormatter(npTime)
+      formatted := formatter.FormatGoLayout(layout)
+      fmt.Println(formatted)
+      ```
+
+      This feature allows seamless integration with Go's native date and time formatting conventions.
+
 2. `dateConverter`: The functionalities provided in `dateConverter` are described below:
 
    1. This is one of the core functionalities in which an English date(not an object) is converted to Nepali date in parts i.e. year, month, day in an array:
@@ -147,6 +179,32 @@ In this package, we provide 2 `go` packages, `nepalitime` and `dateConverter`.
 | `%f`      | Nanosecond as a decimal number, zero-padded to 6 digits. | 000000, 000001, …, 999999                |
 | `%-f`     | Nanosecond as a decimal number.                          | 0, 1, …, 999999                          |
 | `%%`      | A literal `'%'` character.                               | %                                        |
+
+### New Feature: Go-Style Layout Parsing
+
+The `nepalitime` package now supports parsing Go-style layouts for dates and times. This feature allows you to parse the current system date using a layout string that follows Go's native date and time formatting conventions.
+
+#### Parsing Go-Style Layouts
+
+You can parse the current system date using a Go-style layout with the `ParseGoLayout` function:
+
+```go
+import "github.com/opensource-nepal/go-nepali/nepalitime"
+
+layout := "Jan 2, 2006 at 3:04pm (MST)"
+
+npTime, err := nepalitime.ParseGoLayout(layout)
+if err != nil {
+    // Handle error
+}
+
+// Access parsed Nepali date components
+fmt.Println(npTime.Year())  // Example: 2082
+fmt.Println(npTime.Month()) // Example: 1
+fmt.Println(npTime.Day())   // Example: 7
+```
+
+This feature is particularly useful for working with Go-style layouts while converting them to Nepali dates.
 
 ## Contribution
 
